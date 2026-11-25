@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Kopje -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,46 L68,46 L65,72 Q64,78 58,78 L42,78 Q36,78 35,72 Z" />
+    <!-- Oor -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:pathData="M67,51 Q80,51 78,60 Q76,68 65,68" />
+    <!-- Stoom -->
+    <path
+        android:strokeColor="#E8C9A0"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M44,38 Q40,32 44,27 M54,38 Q50,32 54,27 M64,38 Q60,32 64,27" />
+</vector>

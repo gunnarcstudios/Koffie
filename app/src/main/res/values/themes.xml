@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Koffie" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#FFF8F1E9</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <color name="koffie_bg">#6F4E37</color>
+</resources>
