@@ -1,17 +1,17 @@
 # Wie haalt er koffie? ☕
 
-Android-app (Kotlin + Jetpack Compose) die willekeurig kiest wie er koffie haalt.
+Eén app voor Android, iPhone en browser.
 
-## Functies
-- **Loten**: kiest willekeurig iemand die aanwezig is (de vorige haler valt af) en toont de bestelling.
-- **Team**: collega's toevoegen met drankje (koffie, thee, cappuccino…) en opmerking; aan/uit-schakelaar voor aanwezigheid.
-- **Verbinden**: collega's voegen zichzelf toe via Bluetooth/WiFi (Google Nearby Connections), of via deel/plak-lijst.
+- `docs/index.html` is de échte app (webapp). Iedereen opent dezelfde link, vult naam en drankje in, en de loting is live te volgen.
+- De Android-app (`app/`) is een omhulsel om die webapp. Wijzig je `docs/index.html`, dan krijgt ook de Android-app de wijziging, zonder nieuwe APK.
 
-## APK bouwen met GitHub
-1. Maak een nieuwe repository op GitHub en upload alle bestanden uit deze map (inclusief `.github`).
-2. Ga naar **Actions → Build APK**. De build start automatisch bij een push naar `main`
-   (of klik **Run workflow**).
-3. Download na afloop de APK onder **Artifacts → WieHaaltErKoffie-apk**.
-4. Pak uit en installeer op je telefoon (sta "onbekende bronnen" toe).
+## Eenmalig instellen
+1. Zet de repository op **Public** (Settings → General → Danger Zone → Change visibility). Er staat niets geheims in.
+2. **Settings → Pages**: Source = "Deploy from a branch", branch `main`, map `/docs`. Na ±1 minuut staat de app op `https://<gebruikersnaam>.github.io/<repo-naam>/`.
+3. Klopt dat adres niet met `gunnarcstudios.github.io/Koffie`? Pas dan bovenin `app/build.gradle.kts` `webHost` en `webPath` aan.
 
-Het is een debug-APK (automatisch ondertekend), prima voor intern gebruik.
+## APK bouwen
+**Actions → Build APK** (start vanzelf bij een push), download daarna de APK onder Artifacts → WieHaaltErKoffie-apk.
+
+## Gebruiken
+Open de app of de link → "Start koffieronde" → "Deel via WhatsApp". Collega's op Android of iPhone openen de link, doen mee, en de host drukt op "Loot".
