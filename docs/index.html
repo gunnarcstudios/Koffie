@@ -114,6 +114,8 @@ nav button[aria-current=page] .ic{background:var(--acc)}
 .setrow{display:flex;align-items:center;gap:12px}
 .setrow div{flex:1}
 .setrow small{display:block;color:var(--mut);font-size:13px}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.hrow h2{margin:0}
+.pill{min-height:36px;padding:0 12px;border:0;border-radius:18px;background:var(--acc);color:var(--tx);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
 .lnk{display:block;min-height:36px;padding:6px 0;border:0;background:none;color:var(--pri);font-size:13px;font-weight:600;text-align:left;cursor:pointer;font-family:inherit}
 em.badge{font-style:normal}
 .foot a{color:inherit}
@@ -135,7 +137,7 @@ em.badge{font-style:normal}
     <img class="logo" src="img/team.png" alt="Team met koffie">
     <h1>Team</h1>
     <div class="card">
-      <h2>Mijn teams</h2>
+      <div class="hrow"><h2>Mijn teams</h2><span id="proPill"></span></div>
       <p class="muted">Kies met het rondje voor welk team je vandaag meedoet. Via Meer nodig je collega's uit of verwijder je een team.</p>
       <div id="myTeams" role="radiogroup" aria-label="Team voor vandaag"></div>
       <div id="limitNote"></div>
@@ -195,7 +197,7 @@ em.badge{font-style:normal}
   </section>
 
   <p class="foot" id="status"></p>
-  <p class="foot" id="ver">versie 8.3 · <a href="privacy.html">Privacyverklaring</a></p>
+  <p class="foot" id="ver">versie 8.4 · <a href="privacy.html">Privacyverklaring</a></p>
   <p class="foot">© 2026 Gunnarc Studios. Alle rechten voorbehouden.</p>
 </div>
 
@@ -218,7 +220,12 @@ em.badge{font-style:normal}
   var FREE_TEAMS = 1, FREE_MEMBERS = 10;
   var PRO_PRICE = '€ 3,99';          // pas hier de prijs aan
   var PAY_URL = '';                  // plak hier je betaallink (bijv. Mollie of Stripe Payment Link)
-  var SALT = 'koffie-pro-fed6d825b1ad503d';  // niet wijzigen na het uitgeven van codes
+  // Promo-codes (beginnen met een P) zijn voor testers en acties. Zet PROMO_ENABLED op false in de live versie:
+  // dan werken promo-codes niet meer en vervalt de Pro van wie er een gebruikte. Koop-codes (beginnen met een K) blijven werken.
+  // Of laat PROMO_UNTIL een datum zijn (bijv. '2027-01-31'): daarna vervallen promo-codes vanzelf.
+  var PROMO_ENABLED = true;
+  var PROMO_UNTIL = '';
+  var SALT = 'koffie-pro-a98954daa082c2f6';  // niet wijzigen na het uitgeven van codes
   var CODE_ALPHA = 'ABCDEFGHJKMNPQRSTVWXYZ23456789';
   var THEMES = [
     { id: 'koffie', name: 'Koffie', v: { pri: '#6F4E37', bg: '#F8F1E9', tx: '#3B2416', acc: '#E8C9A0', soft: '#EFE2D2', mut: '#6B5B4E', line: '#A08E7E', focus: '#A9714B', off: '#D9CBBB', tx2: '#4A3426', card: '#FFFFFF', onpri: '#FFFFFF', logobg: 'transparent' } },
@@ -242,9 +249,15 @@ em.badge{font-style:normal}
     for (var i = 0; i < 4; i++) { out += CODE_ALPHA[n % CODE_ALPHA.length]; n = Math.floor(n / CODE_ALPHA.length); }
     return out;
   }
-  function validCode(text) {
+  function codeKind(text) {
     var c = String(text || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-    return c.length === 12 && codeCheck(c.slice(0, 8)) === c.slice(8);
+    if (c.length !== 12 || codeCheck(c.slice(0, 8)) !== c.slice(8)) return null;
+    return c.charAt(0) === 'P' ? 'promo' : (c.charAt(0) === 'K' ? 'koop' : null);
+  }
+  function promoActive() {
+    if (!PROMO_ENABLED) return false;
+    if (PROMO_UNTIL && Date.now() > new Date(PROMO_UNTIL + 'T23:59:59').getTime()) return false;
+    return true;
   }
 
   // ---------- hulpfuncties ----------
@@ -290,7 +303,7 @@ em.badge{font-style:normal}
   var statScope = null, statPeriod = 'dag', spendBusy = false, declinedDid = null;
   var POINTS_COST = 20;
   var proMsg = '', full = false;
-  function isPro() { return !!(pro && pro.ok); }
+  function isPro() { return !!(pro && pro.ok && (pro.kind === 'koop' || promoActive())); }   // Pro uit een promo-code (of oude test-code) vervalt als promo uit staat
   function teamIsPro() { return isPro() || !!(room && room.pro); }
   function canAddTeam(c) { return isPro() || teams.length < FREE_TEAMS || teams.some(function (t) { return t.code === c; }); }
   function themeNow() {
@@ -909,7 +922,8 @@ em.badge{font-style:normal}
         '</div>';
     }).join('');
     $('myTeams').innerHTML = h;
-    $('limitNote').innerHTML = isPro() ? '' : '<p class="muted">Gratis versie: 1 team en tot ' + FREE_MEMBERS + ' mensen per team. <button type="button" class="mini" data-tab="pro">Meer met Pro</button></p>';
+    $('limitNote').innerHTML = isPro() ? '' : '<p class="muted">Gratis versie: 1 team en tot ' + FREE_MEMBERS + ' mensen per team.</p>';
+    $('proPill').innerHTML = isPro() ? '' : '<button type="button" class="pill" data-tab="pro" aria-label="Meer met Pro">⭐ Pro</button>';
 
     $('membersCard').hidden = !code;
     $('addCard').hidden = !(code && amAdmin());
@@ -953,6 +967,7 @@ em.badge{font-style:normal}
   function renderPro() {
     var el = $('proBody'), h = '';
     if (proMsg) h += '<div class="banner" style="margin:0 0 12px">' + esc(proMsg) + '</div>';
+    if (pro && pro.ok && !isPro()) h += '<div class="banner" style="margin:0 0 12px">Je promo-code is verlopen. Koop Pro of vul een Pro-code in om Pro te blijven gebruiken.</div>';
     if (!isPro()) {
       h += '<h1>Koffie Pro ⭐</h1><p class="sub">Voor teams die meer willen.</p>' +
         '<div class="card"><ul class="pro-list">' +
@@ -960,10 +975,9 @@ em.badge{font-style:normal}
         '<li><b>Meerdere teams</b>: bijvoorbeeld Administratie én Planning (gratis: 1 team)</li>' +
         '<li><b>Thema\'s</b>: kies je eigen kleuren, ook een donker thema</li>' +
         '<li><b>Statistieken</b>: hoeveel en welke drankjes per dag, week, maand en jaar, zonder namen</li>' +
-        '<li><b>Ritme</b>: om de hoeveel tijd er koffie wordt gehaald</li>' +
+        '<li><b>Ritme</b>: om de hoeveel tijd er koffie wordt gehaald, ook in Excel</li>' +
         '<li><b>Export naar Excel</b> voor je inkoop: drankjes per afdeling, per dag, week, maand en jaar (zonder namen)</li>' +
-        '<li><b>Eerlijk loten</b>: wie minder vaak gehaald heeft, heeft meer kans</li>' +
-        '<li>Geen reclame, ook niet in de gratis versie</li></ul>' +
+        '<li><b>Eerlijk loten</b>: wie minder vaak gehaald heeft, heeft meer kans</li></ul>' +
         '<p class="price">' + esc(PRO_PRICE) + '<small>eenmalig, geen abonnement</small></p>' +
         (PAY_URL ? '<a class="btn big" target="_blank" rel="noopener" href="' + esc(PAY_URL) + '">Koop Pro</a>'
                  : '<button type="button" class="btn big" data-act="buy">Koop Pro</button>') +
@@ -974,7 +988,7 @@ em.badge{font-style:normal}
         '<p class="muted" id="unlockMsg" aria-live="polite"></p></div>';
     } else {
       var cur = themeNow().id;
-      h += '<h1>Koffie Pro ⭐</h1><p class="sub">Pro is actief. Bedankt!</p>' +
+      h += '<h1>Koffie Pro ⭐</h1><p class="sub">' + (pro && pro.kind !== 'koop' ? 'Pro is actief via een promo-code.' : 'Pro is actief. Bedankt!') + '</p>' +
         '<div class="card"><h2>Thema</h2><div class="sbtns" role="group" aria-label="Kies een thema">' +
         THEMES.map(function (t) {
           return '<button type="button" class="sbtn" data-theme="' + t.id + '" aria-pressed="' + (t.id === cur) + '"><i style="background:linear-gradient(135deg,' +
@@ -1144,6 +1158,23 @@ em.badge{font-style:normal}
       Object.keys(per[p]).sort().forEach(function (k) { var x = k.split('\t'); rows.push([x[0], x[1], x[2], per[p][k]]); });
       sheets.push({ name: 'Per ' + p, rows: rows, widths: [14, 26, 24, 10] });
     });
+    var byDay = {}, byHour = {};
+    function hm(t) { var d = new Date(t * 1000); return p2(d.getHours()) + ':' + p2(d.getMinutes()); }
+    ents.forEach(function (e) {
+      var d = new Date(e.t * 1000), dk = bucketKey(d, 'dag') + '\t' + e.team, hk = p2(d.getHours()) + '\t' + e.team;
+      (byDay[dk] = byDay[dk] || []).push(e.t);
+      byHour[hk] = (byHour[hk] || 0) + 1;
+    });
+    var rd = [['Datum', 'Afdeling', 'Aantal rondes', 'Eerste ronde', 'Laatste ronde', 'Gemiddeld tussen rondes (min)']];
+    Object.keys(byDay).sort().forEach(function (k) {
+      var x = k.split('\t'), ts = byDay[k].sort(function (a, b) { return a - b; }), g = [];
+      for (var i = 1; i < ts.length; i++) if (ts[i] - ts[i - 1] >= 600) g.push((ts[i] - ts[i - 1]) / 60);
+      rd.push([x[0], x[1], ts.length, hm(ts[0]), hm(ts[ts.length - 1]), g.length ? Math.round(g.reduce(function (a, b) { return a + b; }, 0) / g.length) : '']);
+    });
+    sheets.push({ name: 'Ritme per dag', rows: rd, widths: [14, 26, 16, 14, 14, 30] });
+    var rh = [['Uur', 'Afdeling', 'Aantal rondes']];
+    Object.keys(byHour).sort().forEach(function (k) { var x = k.split('\t'); rh.push([x[0] + ':00 - ' + p2((+x[0] + 1) % 24) + ':00', x[1], byHour[k]]); });
+    sheets.push({ name: 'Ritme per uur', rows: rh, widths: [18, 26, 16] });
     function dstr(t) { var d = new Date(t * 1000); return d.getDate() + ' ' + MONTHNAMES[d.getMonth()] + ' ' + d.getFullYear(); }
     sheets.push({ name: 'Over deze cijfers', plain: true, widths: [30, 70], rows: [
       ['Over deze cijfers', ''],
@@ -1153,6 +1184,7 @@ em.badge{font-style:normal}
       ['Laatste ronde', ents.length ? dstr(last) : '-'],
       ['Afdelingen', Object.keys(names).join(', ') || '-'],
       ['Gemaakt op', dstr(Date.now() / 1000)],
+      ['Ritme', 'Tijd tussen rondes telt alleen rondes die minstens 10 minuten uit elkaar liggen (snel opnieuw loten telt niet mee).'],
       ['Tip voor inkoop', 'Kijk op het tabblad Overzicht naar Gemiddeld per week en reken dat om naar je inkoopperiode.']
     ] });
     return sheets;
@@ -1220,17 +1252,21 @@ em.badge{font-style:normal}
     h += '<h3>Welke drankjes</h3>' + bars(dr, dr[0].c, '×');
     var pt = Object.keys(perTeam).map(function (k) { return { n: k, c: perTeam[k] }; }).sort(function (a, b) { return b.c - a.c; });
     if (pt.length > 1) h += '<h3>Welke afdeling drinkt het meest</h3>' + bars(pt, pt[0].c, '×');
-    // ritme: om de hoeveel tijd wordt er koffie gehaald
+    // ritme: om de hoeveel tijd wordt er koffie gehaald. Rondes die minder dan 10 minuten na elkaar komen
+    // (bijvoorbeeld opnieuw loten) tellen niet mee voor de tijd tussen rondes.
     var sorted = win.slice().sort(function (a, b) { return a.t - b.t; }), gaps = [], days = {};
     sorted.forEach(function (e, i) {
       var dk = bucketKey(new Date(e.t * 1000), 'dag'); days[dk] = (days[dk] || 0) + 1;
-      if (i && bucketKey(new Date(sorted[i - 1].t * 1000), 'dag') === dk) gaps.push((e.t - sorted[i - 1].t) / 60);
+      if (i && bucketKey(new Date(sorted[i - 1].t * 1000), 'dag') === dk && e.t - sorted[i - 1].t >= 600) gaps.push((e.t - sorted[i - 1].t) / 60);
     });
     var dcount = Object.keys(days).length, busy = Object.keys(hours).sort(function (a, b) { return hours[b] - hours[a]; })[0];
-    h += '<h3>Ritme</h3><ul class="pro-list"><li>Gemiddeld <b>' + (rounds / dcount).toFixed(1).replace('.', ',') + '</b> ronde' + (rounds / dcount > 1 ? 's' : '') + ' op een dag met koffie</li>' +
-      (gaps.length ? '<li>Op zo\'n dag wordt gemiddeld om de <b>' + minutesText(gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length) + '</b> koffie gehaald</li>' : '') +
+    var avgGap = gaps.length ? gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length : 0;
+    h += '<h3>Ritme: om de hoeveel tijd wordt er koffie gehaald?</h3><ul class="pro-list">' +
+      '<li>Gemiddeld <b>' + (rounds / dcount).toFixed(1).replace('.', ',') + '</b> ronde' + (rounds / dcount > 1 ? 's' : '') + ' op een dag met koffie (' + dcount + ' dag' + (dcount === 1 ? '' : 'en') + ' met koffie)</li>' +
+      (gaps.length ? '<li>Tussen twee rondes op dezelfde dag zit gemiddeld <b>' + minutesText(avgGap) + '</b></li>'
+                   : '<li>De tijd tussen rondes is nog niet te berekenen: daarvoor zijn twee rondes op één dag nodig, met minstens 10 minuten ertussen.</li>') +
       '<li>Drukste moment: <b>' + p2(+busy) + ':00 – ' + p2((+busy + 1) % 24) + ':00</b></li></ul>';
-    h += '<h3>Exporteren naar Excel</h3><p class="muted">Een Excel-bestand met tabbladen Overzicht, Per dag, Per week, Per maand en Per jaar: hoeveel van welk drankje per afdeling. Zonder namen. Handig voor je inkoop.</p>' +
+    h += '<h3>Exporteren naar Excel</h3><p class="muted">Een Excel-bestand met tabbladen Overzicht, Per dag, Per week, Per maand, Per jaar en het Ritme (per dag en per uur). Hoeveel van welk drankje per afdeling, zonder namen. Handig voor je inkoop.</p>' +
       '<button type="button" class="btn small" data-act="xlsx">Download Excel</button>' +
       '<button type="button" class="btn alt small" data-act="copyCsv">Kopieer als tekst</button>';
     el.innerHTML = h + '</div>';
@@ -1330,7 +1366,9 @@ em.badge{font-style:normal}
     else if (d.act === 'buy') { var bm = $('buyMsg'); if (bm) bm.textContent = 'Betalen kan binnenkort. Heb je al een code, vul die hieronder in.'; }
     else if (d.act === 'unlock') {
       var um = $('unlockMsg');
-      if (validCode($('proCode').value)) { pro = { ok: true, t: Date.now() }; save('kr_pro', pro); applyTheme(); renderPro(); renderAll(); if (code) ensureMe(); }
+      var kind = codeKind($('proCode').value);
+      if (kind === 'promo' && !promoActive()) { if (um) um.textContent = 'Deze promo-code is niet meer geldig.'; }
+      else if (kind) { pro = { ok: true, kind: kind, t: Date.now() }; save('kr_pro', pro); applyTheme(); renderPro(); renderAll(); if (code) ensureMe(); }
       else if (um) um.textContent = 'Deze code klopt niet. Controleer de code en probeer het opnieuw.';
     }
     else if (d.act === 'unpro') { pro = null; save('kr_pro', null); applyTheme(); renderPro(); renderAll(); }
