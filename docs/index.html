@@ -11,15 +11,15 @@
 html,body{margin:0}
 body{background:#F8F1E9;color:#3B2416;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
 #app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;padding:max(12px,env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}
-h1{margin:14px 0 6px;font-size:28px;font-weight:800;color:#6F4E37;text-align:center}
-h2{margin:0 0 10px;font-size:16px}
-h3{margin:18px 0 6px;font-size:14px}
+h1{margin:10px 0 6px;font-size:28px;font-weight:800;color:#6F4E37;text-align:center}
+h2{margin:0 0 10px;font-size:17px}
+h3{margin:16px 0 8px;font-size:14px;color:#6B5B4E;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .sub{margin:0 0 14px;text-align:center;color:#6B5B4E;font-size:16px}
-.top{display:flex;justify-content:center}
-.pill{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border:0;border-radius:22px;background:#EFE2D2;color:#6F4E37;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;max-width:100%}
-.pill span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.logo{display:block;margin:8px auto 10px;width:100%;max-width:240px;height:auto}
+.logo.small{max-width:190px}
 .card{background:#fff;border-radius:18px;padding:16px;margin:0 0 12px}
-.banner{background:#E8C9A0;border-radius:14px;padding:12px 14px;margin:12px 0 0;font-size:14px;font-weight:500}
+.banner{background:#E8C9A0;border-radius:14px;padding:12px 14px;margin:10px 0 0;font-size:14px;font-weight:500}
 label{display:block;font-size:13px;color:#6B5B4E;margin:10px 0 4px}
 input,select{width:100%;height:48px;border:1px solid #A08E7E;border-radius:10px;padding:0 12px;font-size:16px;background:#fff;color:#3B2416;font-family:inherit}
 input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid #A9714B;outline-offset:2px}
@@ -29,107 +29,118 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .btn.wa{background:#1B7F43}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.small{min-height:46px;font-size:15px}
-.cup{font-size:96px;line-height:1;text-align:center;margin:26px 0 22px}
+.mini{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border:1.5px solid #6F4E37;border-radius:22px;background:transparent;color:#6F4E37;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit}
+.mini.wa{background:#1B7F43;border-color:#1B7F43;color:#fff}
+.mini.arm{background:#F3D6CF;border-color:#F3D6CF;color:#7A1F10}
+.mini.cur{background:#6F4E37;color:#fff}
 .hero{text-align:center;padding:22px 12px;border-radius:24px;margin:8px 0 6px}
 .hero.win{background:#E8C9A0}
 .hero.pop{animation:pop .5s ease-out}
 .hero .big{font-size:42px;font-weight:800;color:#6F4E37;line-height:1.1;word-break:break-word;margin:4px 0}
 .hero .em{font-size:56px;line-height:1.1}
 .reel{font-size:40px;font-weight:800;color:#6F4E37;min-height:50px;word-break:break-word}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips,.tchips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{display:flex;flex-direction:column;align-items:flex-start;min-height:48px;padding:6px 14px;border:0;border-radius:24px;background:#E8C9A0;color:#3B2416;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-align:left}
 .chip small{font-size:12px;font-weight:400;color:#4A3426}
 .chip.off{background:#EFE2D2;color:#6B5B4E;text-decoration:line-through}
 .chip.off small{color:#6B5B4E}
+.tchip{min-height:48px;padding:0 18px;border:1.5px solid #6F4E37;border-radius:24px;background:transparent;color:#6F4E37;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.tchip.cur{background:#6F4E37;color:#fff}
+.teamname{margin:0;font-size:20px;font-weight:700;color:#6F4E37}
 .row{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid #EFE2D2}
 .row:first-child{border-top:0}
-.row.off .who{opacity:.55}
 .who{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
 .who span{font-size:14px;color:#6B5B4E}
 .who small{font-size:12px;color:#6B5B4E}
-.sw{flex:none;width:52px;height:32px;border:0;border-radius:16px;background:#D9CBBB;position:relative;cursor:pointer}
-.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:12px;background:#fff;transition:left .15s}
-.sw.on{background:#6F4E37}
-.sw.on::after{left:24px}
-.x{flex:none;min-width:44px;min-height:44px;border:0;border-radius:22px;background:transparent;color:#6B5B4E;font-size:14px;cursor:pointer;font-family:inherit;padding:0 10px}
+.x{flex:none;min-width:44px;min-height:44px;border:0;border-radius:22px;background:transparent;color:#6B5B4E;font-size:15px;cursor:pointer;font-family:inherit;padding:0 10px}
 .x.arm{background:#F3D6CF;color:#7A1F10;font-weight:600}
-.teamrow{flex:1;min-height:48px;border:0;border-radius:14px;background:#F8F1E9;text-align:left;padding:0 14px;font-size:16px;color:#3B2416;cursor:pointer;font-family:inherit}
-.teamrow.cur{background:#E8C9A0}
+.trow{padding:12px 0;border-top:1px solid #EFE2D2}
+.trow:first-child{border-top:0}
+.trow b{font-size:17px}
+.badge{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:12px;background:#E8C9A0;font-size:12px;font-weight:600}
+.tbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .muted{color:#6B5B4E;font-size:14px;margin:6px 0}
 .foot{text-align:center;color:#6B5B4E;font-size:12px;margin-top:6px}
 nav{position:fixed;left:0;right:0;bottom:0;background:#EFE2D2;padding-bottom:env(safe-area-inset-bottom);z-index:5}
 nav .in{max-width:480px;margin:0 auto;display:flex;justify-content:space-around;height:76px;align-items:center}
-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;width:120px;border:0;background:transparent;color:#6B5B4E;font-size:12px;font-family:inherit;cursor:pointer}
-nav button .ic{display:flex;align-items:center;justify-content:center;width:56px;height:30px;border-radius:15px;font-size:20px}
+nav button{display:flex;flex-direction:column;align-items:center;gap:4px;width:33%;border:0;background:transparent;color:#6B5B4E;font-size:12px;font-family:inherit;cursor:pointer}
+nav button .ic{display:flex;align-items:center;justify-content:center;width:60px;height:38px;border-radius:19px}
+nav button .ic img{height:32px;width:auto;max-width:52px;display:block}
+.sw{flex:none;width:52px;height:32px;border:0;border-radius:16px;background:#D9CBBB;position:relative;cursor:pointer}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:12px;background:#fff;transition:left .15s}
+.sw.on{background:#6F4E37}
+.sw.on::after{left:24px}
+.row.off .who{opacity:.55}
+.order{margin:0;padding:0;list-style:none;font-size:16px}
+.order li{padding:8px 0;border-top:1px solid #EFE2D2}
+.order li:first-child{border-top:0}
+.order li span{display:block;font-size:14px;color:#6B5B4E;margin-top:2px}
 nav button[aria-current=page]{color:#3B2416;font-weight:600}
 nav button[aria-current=page] .ic{background:#E8C9A0}
-.sheet{position:fixed;inset:0;background:rgba(59,36,22,.45);z-index:10;display:flex;align-items:flex-end;justify-content:center}
-.panel{background:#F8F1E9;width:100%;max-width:480px;max-height:90vh;overflow:auto;border-radius:24px 24px 0 0;padding:20px 16px calc(24px + env(safe-area-inset-bottom))}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){.hero.pop{animation:none}.sw::after{transition:none}}
+@media (prefers-reduced-motion:reduce){.hero.pop{animation:none}}
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="top"><button type="button" class="pill" id="teamBtn" aria-haspopup="dialog">👥 <span id="teamName">Kies een team</span> ▾</button></div>
   <div class="banner" id="banner" hidden></div>
 
   <section id="tab-loten">
-    <h1>Wie haalt er koffie?</h1>
+    <h1 class="sr">Wie haalt er koffie?</h1>
     <div id="lotenBody"></div>
   </section>
 
   <section id="tab-team" hidden>
+    <img class="logo" src="img/team.png" alt="Team met koffie">
     <h1>Team</h1>
-    <p class="sub" id="teamSub"></p>
     <div class="card">
-      <h2>Mijn gegevens</h2>
-      <form id="meForm" autocomplete="off">
-        <label for="jname">Jouw naam</label>
-        <input id="jname" maxlength="30" required>
-        <label for="jdrink">Wat wil je drinken?</label>
-        <select id="jdrink"></select>
-        <label for="jnote">Opmerking (melk, suiker…)</label>
-        <input id="jnote" maxlength="40">
-        <button class="btn" type="submit" id="jsubmit">Toevoegen</button>
-      </form>
-      <p class="muted" id="meMsg" aria-live="polite"></p>
+      <h2>Mijn teams</h2>
+      <div id="myTeams"></div>
     </div>
     <div class="card">
-      <h2>Teamleden <span class="muted" id="count"></span></h2>
+      <h2>Nieuw team maken</h2>
+      <label for="newName">Naam van het team</label>
+      <input id="newName" maxlength="40" placeholder="Bijv: Administratie" autocomplete="off">
+      <button class="btn small" type="button" id="newTeam">Maak team</button>
+      <p class="muted" id="newMsg" aria-live="polite"></p>
+    </div>
+    <div class="card">
+      <h2>Aansluiten bij een team</h2>
+      <label for="joinCode">Plak de link of code van je collega hieronder</label>
+      <input id="joinCode" autocomplete="off" autocapitalize="off">
+      <button class="btn alt small" type="button" id="joinTeam">Sluit aan</button>
+      <p class="muted" id="joinMsg" aria-live="polite"></p>
+    </div>
+    <div class="card" id="membersCard" hidden>
+      <h2 id="membersTitle">Leden</h2>
       <div id="memberList"></div>
     </div>
-    <div class="card" id="inviteCard">
-      <h2>Collega's uitnodigen</h2>
-      <p class="muted">Stuur de link. Iedereen met de app of een browser (Android of iPhone) kan zo aansluiten.</p>
-      <div id="inviteBox"></div>
+  </section>
+
+  <section id="tab-drinken" hidden>
+    <img class="logo" src="img/drinken.png" alt="Mijn drinken">
+    <h1 class="sr">Mijn drinken</h1>
+    <p class="sub">Kies per team wat je wilt drinken.</p>
+    <div class="card">
+      <h2>Mijn naam</h2>
+      <form id="nameForm" autocomplete="off">
+        <label for="jname">Jouw naam</label>
+        <input id="jname" maxlength="30" required>
+        <button class="btn small" type="submit">Opslaan</button>
+      </form>
+      <p class="muted" id="nameMsg" aria-live="polite"></p>
     </div>
+    <div id="drinkCards"></div>
   </section>
 
   <p class="foot" id="status"></p>
 </div>
 
 <nav aria-label="Hoofdmenu"><div class="in">
-  <button type="button" data-tab="loten" aria-current="page"><span class="ic">☕</span>Loten</button>
-  <button type="button" data-tab="team"><span class="ic">👥</span>Team</button>
+  <button type="button" data-tab="loten" aria-current="page"><span class="ic"><img src="img/loten-s.png" alt=""></span>Loten</button>
+  <button type="button" data-tab="team"><span class="ic"><img src="img/team-s.png" alt=""></span>Team</button>
+  <button type="button" data-tab="drinken"><span class="ic"><img src="img/drinken-s.png" alt=""></span>Mijn drinken</button>
 </div></nav>
-
-<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-  <div class="panel">
-    <h2 id="sheetTitle">Mijn teams</h2>
-    <div id="teamList"></div>
-    <h3>Nieuw team maken</h3>
-    <label for="newName">Naam van het team</label>
-    <input id="newName" maxlength="40" placeholder="Bijv. Import" autocomplete="off">
-    <button class="btn small" type="button" id="newTeam">Maak team</button>
-    <h3>Aansluiten bij een team</h3>
-    <label for="joinCode">Plak de link of code van je collega</label>
-    <input id="joinCode" autocomplete="off" autocapitalize="off">
-    <button class="btn alt small" type="button" id="joinTeam">Sluit aan</button>
-    <p class="muted" id="sheetMsg" aria-live="polite"></p>
-    <button class="btn alt small" type="button" id="closeSheet">Sluiten</button>
-  </div>
-</div>
 
 <script>
 (function () {
@@ -161,23 +172,27 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     }).join('');
   }
   function newCode() { var s = ''; for (var i = 0; i < 10; i++) s += ALPHA[randInt(ALPHA.length)]; return s; }
-  function plural(n) { return n; }
+  function topicOf(c) { return 'koffieronde-' + c; }
 
   // ---------- opgeslagen gegevens (per toestel) ----------
   var pid = null;
   try { pid = localStorage.getItem('kr_pid'); } catch (e) { pid = null; }
   if (!pid) { pid = uid(); try { localStorage.setItem('kr_pid', pid); } catch (e) { /* negeren */ } }
-  var profile = load('kr_profile', null);        // {name, drink, note}
-  if (profile) profile.drink = fixDrink(profile.drink);
-  var teams = load('kr_teams', []);              // [{code, name}]
+  var profile = load('kr_profile', null);          // {name}
+  var drinks = load('kr_drinks', {});              // {teamcode: {drink, note}}
+  var lastDrink = load('kr_lastdrink', null);      // {drink, note}
+  if (profile && profile.drink && !lastDrink) { lastDrink = { drink: fixDrink(profile.drink), note: clean(profile.note, 40) }; save('kr_lastdrink', lastDrink); }
+  var teams = load('kr_teams', []);                // [{code, name}]
   var active = load('kr_active', null);
+
+  function myDrink(c) { return drinks[c] || lastDrink || { drink: 'Koffie', note: '' }; }
 
   // ---------- staat van het actieve team ----------
   var code = null, topic = null, es = null;
-  var opened = false, demo = false, offline = false, heard = false;
+  var opened = false, demo = false, offline = false, heard = false, forcePresent = false;
   var room = null, members = new Map(), times = {}, seenDraw = {}, lastDraw = null, seen = new Set();
   var anim = null, lastAnimDid = null, popNow = false;
-  var delArm = null, leaveArm = null, tab = 'loten';
+  var delArm = null, rmArm = null, tab = 'loten';
   var syncTimer = null, demoTimer = null, cacheTimer = null, notFound = false;
 
   function setStatus(t) { $('status').textContent = t || ''; }
@@ -248,7 +263,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
         var old = members.get(ev.pid);
         members.set(String(ev.pid), {
           pid: String(ev.pid), name: clean(ev.name, 30), drink: fixDrink(ev.drink),
-          note: clean(ev.note, 40), present: old ? old.present : true
+          note: clean(ev.note, 40), present: old ? old.present : (ev.p === false ? false : true)
         });
         break;
       }
@@ -292,6 +307,13 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     ev.id = uid(); ev.by = pid;
     if (demo) { setTimeout(function () { apply(ev, Date.now() / 1000, true); }, 30); return; }
     postTo(topic, ev);
+  }
+  // Bericht naar een willekeurig team (ook als dat niet het actieve team is)
+  function sendToTeam(c, ev) {
+    if (c === code) { publish(ev); return; }
+    if (demo) return;
+    ev.id = uid(); ev.by = pid;
+    postTo(topicOf(c), ev);
   }
 
   function connect() {
@@ -344,12 +366,12 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
         apply({ k: 'join', id: uid(), pid: p[0], name: p[1], drink: p[2], note: p[3] }, now, false);
       });
     }
-    ensureMe();
+    afterSync();
   }
 
   function afterSync() {
-    if (demo || !code) return;
-    if (!heard) {
+    if (!code) return;
+    if (!demo && !heard) {
       if (members.size || room) {
         // De server is het team vergeten (12 uur oud). Herstel het vanuit dit toestel.
         var m = Array.from(members.values()).map(function (x) { return [x.pid, x.name, x.drink, x.note, x.present ? 1 : 0]; });
@@ -362,14 +384,24 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       }
     }
     ensureMe();
+    if (forcePresent) {
+      var me = members.get(pid);
+      if (me && !me.present) publish({ k: 'present', pid: pid, v: true });
+      forcePresent = false;
+    }
+  }
+
+  function joinEvent(c, newMemberPresent) {
+    var d = myDrink(c);
+    var ev = { k: 'join', pid: pid, name: profile.name, drink: d.drink, note: d.note || '' };
+    if (newMemberPresent === false) ev.p = false;
+    return ev;
   }
 
   function ensureMe() {
-    if (!profile || !code) return;
-    var m = members.get(pid);
-    if (!m || m.name !== profile.name || m.drink !== profile.drink || m.note !== (profile.note || '')) {
-      publish({ k: 'join', pid: pid, name: profile.name, drink: profile.drink, note: profile.note || '' });
-    }
+    if (!profile || !profile.name || !code) return;
+    var d = myDrink(code), m = members.get(pid);
+    if (!m || m.name !== profile.name || m.drink !== d.drink || m.note !== (d.note || '')) publish(joinEvent(code));
   }
 
   // ---------- teams ----------
@@ -384,37 +416,51 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function openTeam(c, name) {
     if (!/^[a-z0-9]{6,20}$/.test(c)) return;
     teardown();
-    code = c; topic = 'koffieronde-' + c;
+    code = c; topic = topicOf(c);
     active = c; save('kr_active', c);
-    var found = teams.filter(function (t) { return t.code === c; })[0];
-    if (!found) { teams.push({ code: c, name: name || 'Team' }); save('kr_teams', teams); }
+    if (!teams.some(function (t) { return t.code === c; })) { teams.push({ code: c, name: name || 'Team' }); save('kr_teams', teams); }
     loadCache(c);
     if (name && !room) room = { name: name };
     try { history.replaceState(null, '', '#' + c); } catch (e) { /* negeren */ }
     connect();
-    renderAll();
+    renderAll(); renderDrinks();
+  }
+
+  // Kies je team van vandaag: in al je andere teams doe je dan automatisch niet mee.
+  function activateTeam(c, name) {
+    teams.forEach(function (t) {
+      if (t.code !== c) sendToTeam(t.code, { k: 'present', pid: pid, v: false });
+    });
+    if (c === code) {
+      var me = members.get(pid);
+      if (me && !me.present) publish({ k: 'present', pid: pid, v: true });
+      renderAll();
+    } else {
+      forcePresent = true;
+      openTeam(c, name);
+    }
   }
 
   function createTeam(name) {
-    var c = newCode();
-    var nm = clean(name, 40) || 'Team';
-    teams.push({ code: c, name: nm }); save('kr_teams', teams);
-    openTeam(c, nm);
+    var c = newCode(), nm = clean(name, 40) || 'Team';
+    activateTeam(c, nm);
     publish({ k: 'room', name: nm });
   }
 
-  function leaveTeam(c) {
-    var t = 'koffieronde-' + c;
-    if (c === code && demo) { /* niets te melden */ } else postTo(t, { k: 'leave', id: uid(), by: pid, pid: pid });
+  function removeTeam(c) {
+    if (!demo || c !== code) {
+      if (profile) sendToTeam(c, { k: 'leave', pid: pid });
+    }
     teams = teams.filter(function (x) { return x.code !== c; }); save('kr_teams', teams);
+    delete drinks[c]; save('kr_drinks', drinks);
     try { localStorage.removeItem('kr_c_' + c); } catch (e) { /* negeren */ }
     if (c === code) {
       teardown(); code = null; topic = null; room = null; members = new Map(); times = {}; lastDraw = null;
       active = null; save('kr_active', null);
       try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* negeren */ }
-      if (teams.length) openTeam(teams[0].code);
+      if (teams.length) activateTeam(teams[0].code);
     }
-    renderAll();
+    renderAll(); renderDrinks();
   }
 
   function parseCode(text) {
@@ -464,8 +510,8 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
 
   // ---------- delen ----------
   function baseUrl() { return location.href.split('#')[0]; }
-  function inviteUrl() { return baseUrl() + '#' + code; }
-  function inviteText() { return 'Doe mee met team "' + (room ? room.name : 'Team') + '" in de koffieloting ☕ ' + inviteUrl(); }
+  function inviteUrl(c) { return baseUrl() + '#' + c; }
+  function inviteText(t) { return 'Doe mee met team "' + t.name + '" in de koffieloting ☕ ' + inviteUrl(t.code); }
   function listText() {
     var lines = [];
     if (lastDraw) { lines.push('Leukste collega: ' + lastDraw.wname + ' ☕'); lines.push(''); }
@@ -492,161 +538,205 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function nativeShare(text) { try { navigator.share({ text: text }).catch(function () {}); } catch (e) { /* negeren */ } }
 
   // ---------- weergave ----------
-  function renderAll() {
-    $('teamName').textContent = room && code ? room.name : (code ? 'Team' : 'Kies een team');
-    renderLoten(); renderTeam(); renderSheet();
+  function renderAll() { renderLoten(); renderTeam(); }
+
+  // Eén teamlid met schuifje (doet vandaag wel/niet mee). Opmerking staat direct achter de drank.
+  function memberRow(m, withRemove) {
+    return '<div class="row' + (m.present ? '' : ' off') + '"><div class="who"><b>' + esc(m.name) + (m.pid === pid ? ' (jij)' : '') + '</b><span>' +
+      esc(m.drink) + (m.note ? ' (' + esc(m.note) + ')' : '') + '</span>' +
+      (withRemove ? '<small>' + (times[m.pid] || 0) + '× gehaald</small>' : (m.present ? '' : '<small>doet vandaag niet mee</small>')) + '</div>' +
+      '<button type="button" class="sw' + (m.present ? ' on' : '') + '" data-pid="' + esc(m.pid) + '" role="switch" aria-checked="' + m.present +
+      '" aria-label="Doet vandaag mee: ' + esc(m.name) + '"></button>' +
+      (withRemove ? '<button type="button" class="x' + (delArm === m.pid ? ' arm' : '') + '" data-del="' + esc(m.pid) + '" aria-label="Verwijder ' + esc(m.name) + ' uit het team">' +
+        (delArm === m.pid ? 'Zeker?' : '✕') + '</button>' : '') + '</div>';
+  }
+
+  function teamCard() {
+    var all = Array.from(members.values());
+    var h = '<div class="card"><h2>Jouw team vandaag</h2>';
+    if (teams.length > 1) {
+      h += '<div class="tchips" role="group" aria-label="Kies je team">' + teams.map(function (t) {
+        return '<button type="button" class="tchip' + (t.code === code ? ' cur' : '') + '" data-open="' + esc(t.code) + '" aria-pressed="' + (t.code === code) + '">' + esc(t.name) + '</button>';
+      }).join('') + '</div><p class="muted">Wissel je van team, dan doe je in je andere teams niet mee.</p>';
+    } else {
+      h += '<p class="teamname">' + esc(room ? room.name : 'Team') + '</p>';
+    }
+    h += '<h3>Wie zitten er in dit team</h3>';
+    if (all.length) {
+      h += all.map(function (m) { return memberRow(m, false); }).join('') +
+        '<p class="muted">Zet de schuif uit als iemand vandaag niet meedoet. Diegene blijft gewoon in het team.</p>';
+    } else h += '<p class="muted">Nog niemand. Zet je naam en drankje bij Mijn drinken en nodig collega\'s uit via Team.</p>';
+    return h + '</div>';
   }
 
   function renderLoten() {
     var el = $('lotenBody');
     if (!code) {
-      el.innerHTML = '<p class="sub">Welkom! Maak een team of sluit aan bij het team van een collega.</p><div class="cup">☕</div>' +
-        '<button class="btn big" type="button" data-act="sheet">Team kiezen of maken</button>';
+      el.innerHTML = '<img class="logo" src="img/loten.png" alt="Wie moet de koffie halen?">' +
+        '<p class="sub">Je zit nog niet in een team.</p>' +
+        '<button class="btn big" type="button" data-tab="team">Team maken of aansluiten</button>';
       return;
     }
     if (notFound && !members.size) {
-      el.innerHTML = '<p class="sub">Nog geen gegevens gevonden voor dit team.</p>' +
+      el.innerHTML = '<img class="logo" src="img/loten.png" alt="Wie moet de koffie halen?">' +
+        '<p class="sub">Nog geen gegevens gevonden voor dit team.</p>' +
         '<p class="muted" style="text-align:center">Het team is mogelijk al 12 uur niet gebruikt. Vraag een collega die het team al heeft om het te openen, en probeer het daarna opnieuw.</p>' +
-        '<button class="btn big" type="button" data-act="sheet">Ander team kiezen</button>';
+        '<button class="btn big" type="button" data-tab="team">Naar Team</button>';
       return;
     }
     var all = Array.from(members.values()), present = presentList();
-    var h = '<p class="sub">' + present.length + ' van ' + all.length + ' collega\'s doen mee</p>';
     var animating = anim && !anim.done;
-    if (animating) {
-      h += '<div class="hero"><div>Wie haalt er koffie…?</div><div class="reel">' + esc(anim.order[anim.i]) + '</div></div>';
-    } else if (lastDraw) {
-      var counts = {};
-      present.forEach(function (m) { counts[m.drink] = (counts[m.drink] || 0) + 1; });
-      var lines = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; })
-        .map(function (k) { return '<li>' + counts[k] + '× ' + esc(k) + '</li>'; }).join('');
-      var notes = present.filter(function (m) { return m.note; })
-        .map(function (m) { return esc(m.name) + ': ' + esc(m.note); }).join(' · ');
-      h += '<div class="hero win' + (popNow ? ' pop' : '') + '"><div class="em">🎉</div><div>Vandaag haalt…</div><div class="big">' +
-        esc(lastDraw.wname) + '</div><div>koffie!</div></div>' +
-        '<div class="card" style="margin-top:12px"><h2>Bestelling</h2><ul style="margin:0;padding:0;list-style:none;font-size:16px;line-height:1.6">' + lines + '</ul>' +
-        (notes ? '<p class="muted">' + notes + '</p>' : '') + '</div>';
-    } else {
-      h += '<div class="cup">☕</div>';
-    }
-    h += '<button class="btn big" type="button" data-act="draw"' + (present.length && !animating ? '' : ' disabled') + '>' +
+    var sub = '<p class="sub">' + esc(room ? room.name : 'Team') + ' · ' + present.length + ' van ' + all.length + ' doen mee</p>';
+    var btn = '<button class="btn big" type="button" data-act="draw"' + (present.length && !animating ? '' : ' disabled') + '>' +
       (lastDraw ? 'Opnieuw loten' : 'Loot de koffiehaler!') + '</button>';
-    if (present.length === 0) h += '<p class="muted" style="text-align:center">Er doet nog niemand mee. Voeg jezelf toe bij Team.</p>';
-
-    if (lastDraw && !animating && present.length) {
-      var txt = listText();
-      h += '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(txt) + '">Deel bestelling via WhatsApp</a>' +
-        '<button class="btn alt small" type="button" data-act="copyList">Kopieer bestelling</button>' +
-        (canShare ? '<button class="btn alt small" type="button" data-act="shareList">Deel op een andere manier</button>' : '');
+    var h;
+    if (animating) {
+      h = sub + '<div class="hero"><div>Wie haalt er koffie…?</div><div class="reel">' + esc(anim.order[anim.i]) + '</div></div>' + btn + teamCard();
+    } else if (lastDraw) {
+      // Per drank: aantal, en daaronder wie het wil, met de opmerking direct achter de naam
+      var groups = {};
+      present.forEach(function (m) { (groups[m.drink] = groups[m.drink] || []).push(m); });
+      var lines = Object.keys(groups).sort(function (a, b) { return groups[b].length - groups[a].length; })
+        .map(function (k) {
+          return '<li><b>' + groups[k].length + '× ' + esc(k) + '</b><span>' + groups[k].map(function (m) {
+            return esc(m.name) + (m.note ? ' (' + esc(m.note) + ')' : '');
+          }).join(', ') + '</span></li>';
+        }).join('');
+      h = sub + '<div class="hero win' + (popNow ? ' pop' : '') + '"><div class="em">🎉</div><div>Vandaag haalt…</div><div class="big">' +
+        esc(lastDraw.wname) + '</div><div>koffie!</div></div>' + btn +
+        '<div class="card" style="margin-top:12px"><h2>Bestelling</h2><ul class="order">' + lines + '</ul></div>';
+      if (present.length) {
+        h += '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(listText()) + '">Deel bestelling via WhatsApp</a>' +
+          '<button class="btn alt small" type="button" data-act="copyList">Kopieer bestelling</button>' +
+          (canShare ? '<button class="btn alt small" type="button" data-act="shareList">Deel op een andere manier</button>' : '') +
+          '<div style="height:16px"></div>';
+      }
+      h += teamCard();
+    } else {
+      h = '<img class="logo" src="img/loten.png" alt="Wie moet de koffie halen?">' + sub + btn;
+      if (!present.length) h += '<p class="muted" style="text-align:center">Er doet nog niemand mee.</p>';
+      h += '<div style="height:16px"></div>' + teamCard();
     }
-
-    h += '<div class="card" style="margin-top:16px"><h2>Kandidaten</h2>';
-    if (all.length) {
-      h += '<div class="chips">' + all.map(function (m) {
-        return '<button type="button" class="chip' + (m.present ? '' : ' off') + '" data-pid="' + esc(m.pid) + '" aria-pressed="' + m.present + '">' +
-          esc(m.name) + '<small>' + esc(m.drink) + (m.present ? '' : ' · doet niet mee') + '</small></button>';
-      }).join('') + '</div><p class="muted">Tik op een naam om iemand uit of weer in te schakelen.</p>';
-    } else h += '<p class="muted">Nog niemand. Voeg jezelf toe bij Team en nodig collega\'s uit.</p>';
-    h += '</div>';
     el.innerHTML = h;
   }
 
   function renderTeam() {
-    $('teamSub').textContent = code ? (room ? room.name : 'Team') : 'Kies eerst een team (bovenaan)';
-    $('jsubmit').textContent = profile ? 'Opslaan' : 'Toevoegen';
-    var all = Array.from(members.values());
-    $('count').textContent = '· ' + all.filter(function (m) { return m.present; }).length + ' van ' + all.length + ' doen mee';
-    if (!code) { $('memberList').innerHTML = '<p class="muted">Nog geen team gekozen.</p>'; $('inviteCard').hidden = true; return; }
-    $('inviteCard').hidden = false;
-    $('memberList').innerHTML = all.length ? all.map(function (m) {
-      var n = times[m.pid] || 0;
-      return '<div class="row' + (m.present ? '' : ' off') + '"><div class="who"><b>' + esc(m.name) + (m.pid === pid ? ' (jij)' : '') + '</b><span>' +
-        esc(m.drink) + (m.note ? ' · ' + esc(m.note) : '') + '</span><small>' + n + '× gehaald</small></div>' +
-        '<button type="button" class="sw' + (m.present ? ' on' : '') + '" data-pid="' + esc(m.pid) + '" role="switch" aria-checked="' + m.present +
-        '" aria-label="Doet mee: ' + esc(m.name) + '"></button>' +
-        '<button type="button" class="x' + (delArm === m.pid ? ' arm' : '') + '" data-del="' + esc(m.pid) + '" aria-label="Verwijder ' + esc(m.name) + '">' +
-        (delArm === m.pid ? 'Zeker?' : '✕') + '</button></div>';
-    }).join('') : '<p class="muted">Nog niemand in dit team.</p>';
+    var h = '';
+    if (!teams.length) h = '<p class="muted">Je zit nog niet in een team.</p>';
+    else h = teams.map(function (t) {
+      var cur = t.code === code;
+      return '<div class="trow"><b>' + esc(t.name) + '</b>' + (cur ? '<span class="badge">vandaag</span>' : '') + '<div class="tbtns">' +
+        (cur ? '' : '<button type="button" class="mini" data-open="' + esc(t.code) + '">Kies voor vandaag</button>') +
+        '<a class="mini wa" target="_blank" rel="noopener" href="' + waLink(inviteText(t)) + '">Uitnodigen</a>' +
+        '<button type="button" class="mini" data-act="copyInvite" data-team="' + esc(t.code) + '">Kopieer link</button>' +
+        (canShare ? '<button type="button" class="mini" data-act="shareInvite" data-team="' + esc(t.code) + '">Delen</button>' : '') +
+        '<button type="button" class="mini' + (rmArm === t.code ? ' arm' : '') + '" data-rm="' + esc(t.code) + '" aria-label="Verwijder team ' + esc(t.name) + '">' +
+        (rmArm === t.code ? 'Zeker?' : 'Verwijder') + '</button></div></div>';
+    }).join('');
+    $('myTeams').innerHTML = h;
 
-    var inv = '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(inviteText()) + '">Nodig uit via WhatsApp</a>' +
-      '<button class="btn alt small" type="button" data-act="copyInvite">Kopieer link</button>' +
-      (canShare ? '<button class="btn alt small" type="button" data-act="shareInvite">Deel op een andere manier</button>' : '') +
-      '<h3>Lijst delen</h3><p class="muted">Stuurt de koffielijst' + (lastDraw ? ' met de leukste collega (' + esc(lastDraw.wname) + ') bovenaan' : '') + ' naar WhatsApp.</p>' +
-      '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(listText()) + '">Deel lijst via WhatsApp</a>' +
-      '<button class="btn alt small" type="button" data-act="copyList">Kopieer lijst</button>';
-    $('inviteBox').innerHTML = inv;
+    $('membersCard').hidden = !code;
+    if (code) {
+      var all = Array.from(members.values());
+      $('membersTitle').textContent = 'Leden van ' + (room ? room.name : 'Team') + ' (' + all.length + ')';
+      $('memberList').innerHTML = all.length ? all.map(function (m) { return memberRow(m, true); }).join('') :
+        '<p class="muted">Nog niemand in dit team.</p>';
+    }
   }
 
-  function renderSheet() {
-    if ($('sheet').hidden) return;
-    $('teamList').innerHTML = teams.length ? teams.map(function (t) {
-      return '<div class="row"><button type="button" class="teamrow' + (t.code === code ? ' cur' : '') + '" data-open="' + esc(t.code) + '"><b>' + esc(t.name) +
-        '</b>' + (t.code === code ? ' · actief' : '') + '</button><button type="button" class="x' + (leaveArm === t.code ? ' arm' : '') +
-        '" data-leave="' + esc(t.code) + '" aria-label="Verlaat team ' + esc(t.name) + '">' + (leaveArm === t.code ? 'Zeker?' : 'Verlaat') + '</button></div>';
-    }).join('') : '<p class="muted">Je zit nog in geen team.</p>';
+  // Mijn drinken: per team een eigen keuze. Wordt alleen opnieuw getekend bij een tabwissel of
+  // teamwijziging, zodat het typen niet wordt onderbroken door berichten van collega's.
+  function renderDrinks() {
+    $('jname').value = profile ? profile.name || '' : $('jname').value;
+    if (!teams.length) { $('drinkCards').innerHTML = '<div class="card"><p class="muted">Je zit nog niet in een team. Maak of kies er eerst een bij Team.</p></div>'; return; }
+    $('drinkCards').innerHTML = teams.map(function (t) {
+      var d = myDrink(t.code), known = DRINKS.indexOf(d.drink) >= 0 && d.drink !== 'Anders';
+      var opts = DRINKS.map(function (x) {
+        var sel = known ? x === d.drink : x === 'Anders';
+        return '<option' + (sel ? ' selected' : '') + '>' + esc(x) + '</option>';
+      }).join('');
+      var other = known ? '' : (d.drink === 'Anders' ? '' : d.drink);
+      return '<div class="card" data-card="' + esc(t.code) + '"><h2>' + esc(t.name) + (t.code === code ? ' <span class="badge">vandaag</span>' : '') + '</h2>' +
+        '<label for="dd-' + esc(t.code) + '">Wat wil je drinken?</label>' +
+        '<select id="dd-' + esc(t.code) + '" data-dsel="' + esc(t.code) + '">' + opts + '</select>' +
+        '<div data-dotherbox="' + esc(t.code) + '"' + (known ? ' hidden' : '') + '><label for="do-' + esc(t.code) + '">Typ wat je wilt hebben</label>' +
+        '<input id="do-' + esc(t.code) + '" maxlength="30" value="' + esc(other) + '" placeholder="Bijv: verse muntthee" autocomplete="off"></div>' +
+        '<label for="dn-' + esc(t.code) + '">Opmerking (melk, suiker…)</label>' +
+        '<input id="dn-' + esc(t.code) + '" maxlength="40" value="' + esc(d.note || '') + '" autocomplete="off">' +
+        '<button class="btn small" type="button" data-act="saveDrink" data-team="' + esc(t.code) + '">Opslaan</button>' +
+        '<p class="muted" data-dmsg="' + esc(t.code) + '" aria-live="polite"></p></div>';
+    }).join('');
   }
 
   function showTab(t) {
     tab = t;
-    $('tab-loten').hidden = t !== 'loten';
-    $('tab-team').hidden = t !== 'team';
+    ['loten', 'team', 'drinken'].forEach(function (n) { $('tab-' + n).hidden = n !== t; });
     Array.prototype.forEach.call(document.querySelectorAll('nav button'), function (b) {
       if (b.dataset.tab === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
+    if (t === 'drinken') renderDrinks();
     window.scrollTo(0, 0);
   }
-  function openSheet() { $('sheet').hidden = false; $('sheetMsg').textContent = ''; renderSheet(); $('sheetTitle').scrollIntoView(); }
-  function closeSheet() { $('sheet').hidden = true; $('teamBtn').focus(); }
+
+  function saveDrink(c) {
+    var msg = document.querySelector('[data-dmsg="' + c + '"]');
+    if (!profile || !profile.name) { if (msg) msg.textContent = 'Vul eerst bovenaan je naam in en klik op Opslaan.'; return; }
+    var sel = $('dd-' + c).value, drink = sel;
+    if (sel === 'Anders') drink = clean($('do-' + c).value, 30) || 'Anders';
+    var d = { drink: drink, note: clean($('dn-' + c).value, 40) };
+    drinks[c] = d; save('kr_drinks', drinks);
+    lastDrink = d; save('kr_lastdrink', lastDrink);
+    sendToTeam(c, joinEvent(c, c === code));
+    if (msg) msg.textContent = 'Opgeslagen ✓ – je collega\'s zien je keuze.';
+  }
 
   // ---------- events van de pagina ----------
-  $('jdrink').innerHTML = DRINKS.map(function (d) { return '<option>' + esc(d) + '</option>'; }).join('');
-  if (profile) { $('jname').value = profile.name || ''; $('jdrink').value = profile.drink || 'Koffie'; $('jnote').value = profile.note || ''; }
-
-  $('meForm').addEventListener('submit', function (e) {
+  $('nameForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = clean($('jname').value, 30);
     if (!name) return;
-    profile = { name: name, drink: $('jdrink').value, note: clean($('jnote').value, 40) };
+    profile = { name: name };
     save('kr_profile', profile);
-    $('meMsg').textContent = code ? 'Opgeslagen ✓ – je collega\'s zien je gegevens.' : 'Opgeslagen ✓ – kies bovenaan een team om mee te doen.';
-    ensureMe();
+    teams.forEach(function (t) { sendToTeam(t.code, joinEvent(t.code, t.code === code)); });
+    $('nameMsg').textContent = teams.length ? 'Opgeslagen ✓ – je collega\'s zien je naam.' : 'Opgeslagen ✓ – maak of kies nu een team bij Team.';
     renderAll();
   });
 
   $('newTeam').addEventListener('click', function () {
     var n = clean($('newName').value, 40);
-    if (!n) { $('sheetMsg').textContent = 'Geef het team een naam.'; return; }
-    $('newName').value = '';
+    if (!n) { $('newMsg').textContent = 'Geef het team een naam.'; return; }
+    $('newName').value = ''; $('newMsg').textContent = '';
     createTeam(n);
-    closeSheet();
-    showTab(profile ? 'loten' : 'team');
+    showTab(profile ? 'loten' : 'drinken');
   });
 
   $('joinTeam').addEventListener('click', function () {
     var c = parseCode($('joinCode').value);
-    if (!c) { $('sheetMsg').textContent = 'Dat lijkt geen geldige link of code.'; return; }
-    $('joinCode').value = '';
-    openTeam(c);
-    closeSheet();
-    showTab(profile ? 'loten' : 'team');
+    if (!c) { $('joinMsg').textContent = 'Dat lijkt geen geldige link of code.'; return; }
+    $('joinCode').value = ''; $('joinMsg').textContent = '';
+    activateTeam(c);
+    showTab(profile ? 'loten' : 'drinken');
   });
 
-  $('closeSheet').addEventListener('click', closeSheet);
-  $('sheet').addEventListener('click', function (e) { if (e.target === $('sheet')) closeSheet(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('sheet').hidden) closeSheet(); });
-  $('teamBtn').addEventListener('click', openSheet);
+  $('drinkCards').addEventListener('change', function (e) {
+    var c = e.target.dataset && e.target.dataset.dsel;
+    if (!c) return;
+    var box = document.querySelector('[data-dotherbox="' + c + '"]');
+    box.hidden = e.target.value !== 'Anders';
+    if (!box.hidden) $('do-' + c).focus();
+  });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-leave],[data-tab]');
+    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-rm],[data-tab]');
     if (!t) return;
     var d = t.dataset;
     if (d.tab) { showTab(d.tab); return; }
     if (d.act === 'draw') doDraw();
-    else if (d.act === 'sheet') openSheet();
     else if (d.act === 'copyList') copyText(listText(), t, t.textContent);
-    else if (d.act === 'copyInvite') copyText(inviteUrl(), t, 'Kopieer link');
     else if (d.act === 'shareList') nativeShare(listText());
-    else if (d.act === 'shareInvite') nativeShare(inviteText());
+    else if (d.act === 'copyInvite') copyText(inviteUrl(d.team), t, 'Kopieer link');
+    else if (d.act === 'shareInvite') nativeShare(inviteText(teams.filter(function (x) { return x.code === d.team; })[0] || { code: d.team, name: 'Team' }));
+    else if (d.act === 'saveDrink') saveDrink(d.team);
     else if (d.pid) {
       var m = members.get(d.pid);
       if (m) publish({ k: 'present', pid: m.pid, v: !m.present });
@@ -654,25 +744,25 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       if (delArm === d.del) { publish({ k: 'leave', pid: d.del }); delArm = null; }
       else { delArm = d.del; renderTeam(); setTimeout(function () { if (delArm === d.del) { delArm = null; renderTeam(); } }, 3000); }
     } else if (d.open) {
-      if (d.open !== code) openTeam(d.open);
-      closeSheet(); showTab('loten');
-    } else if (d.leave) {
-      if (leaveArm === d.leave) { leaveArm = null; leaveTeam(d.leave); }
-      else { leaveArm = d.leave; renderSheet(); setTimeout(function () { if (leaveArm === d.leave) { leaveArm = null; renderSheet(); } }, 3000); }
+      activateTeam(d.open);
+    } else if (d.rm) {
+      if (rmArm === d.rm) { rmArm = null; removeTeam(d.rm); }
+      else { rmArm = d.rm; renderTeam(); setTimeout(function () { if (rmArm === d.rm) { rmArm = null; renderTeam(); } }, 3000); }
     }
   });
 
   window.addEventListener('hashchange', function () {
     var h = location.hash.replace('#', '');
-    if (/^[a-z0-9]{6,20}$/.test(h) && h !== code) openTeam(h);
+    if (/^[a-z0-9]{6,20}$/.test(h) && h !== code) activateTeam(h);
   });
 
   // ---------- start ----------
   var h0 = location.hash.replace('#', '');
-  if (/^[a-z0-9]{6,20}$/.test(h0)) openTeam(h0);
+  if (/^[a-z0-9]{6,20}$/.test(h0)) activateTeam(h0);
   else if (active && teams.some(function (t) { return t.code === active; })) openTeam(active);
+  else if (teams.length) openTeam(teams[0].code);
   else renderAll();
-  if (!profile) showTab(code ? 'team' : 'loten');
+  if (profile && profile.name) showTab('loten'); else showTab(teams.length || code ? 'drinken' : 'loten');
 })();
 </script>
 </body>
