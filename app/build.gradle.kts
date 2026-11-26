@@ -16,8 +16,8 @@ android {
         applicationId = "nl.koffie.wiehaaltkoffie"
         minSdk = 26
         targetSdk = 35
-        versionCode = 13
-        versionName = "8.3"
+        versionCode = 14
+        versionName = "8.4"
 
         buildConfigField("String", "WEB_HOST", "\"$webHost\"")
         buildConfigField("String", "WEB_URL", "\"https://$webHost$webPath/\"")
