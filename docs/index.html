@@ -5,18 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F8F1E9">
 <title>Wie haalt er koffie?</title>
+<meta name="description" content="Loot wie er koffie haalt op jouw afdeling. Doe mee met de koffieloting.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wie haalt er koffie?">
+<meta property="og:description" content="Doe mee met de koffieloting van je afdeling: loot wie er koffie haalt.">
+<meta property="og:image" content="https://gunnarcstudios.github.io/Koffie/img/loten.png">
 <style>
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
 body{background:#F8F1E9;color:#3B2416;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
-#app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;padding:max(12px,env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}
+#app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;padding:max(12px,env(safe-area-inset-top)) 16px calc(84px + env(safe-area-inset-bottom))}
 h1{margin:10px 0 6px;font-size:28px;font-weight:800;color:#6F4E37;text-align:center}
 h2{margin:0 0 10px;font-size:17px}
 h3{margin:16px 0 8px;font-size:14px;color:#6B5B4E;font-weight:600}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .sub{margin:0 0 14px;text-align:center;color:#6B5B4E;font-size:16px}
-.logo{display:block;margin:8px auto 10px;width:100%;max-width:240px;height:auto}
+.logo{display:block;margin:4px auto 8px;width:100%;max-width:150px;height:auto}
 .logo.small{max-width:190px}
 .card{background:#fff;border-radius:18px;padding:16px;margin:0 0 12px}
 .banner{background:#E8C9A0;border-radius:14px;padding:12px 14px;margin:10px 0 0;font-size:14px;font-weight:500}
@@ -58,14 +63,23 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .trow:first-child{border-top:0}
 .trow b{font-size:17px}
 .badge{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:12px;background:#E8C9A0;font-size:12px;font-weight:600}
-.tbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tmain{display:flex;align-items:center;gap:12px}
+.radio{flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.radio i{width:26px;height:26px;border:2.5px solid #6F4E37;border-radius:50%;display:block;position:relative}
+.radio[aria-checked=true] i::after{content:"";position:absolute;inset:4px;background:#6F4E37;border-radius:50%}
+.tname{flex:1;min-width:0;display:flex;flex-direction:column}
+.tname small{font-size:12px;color:#6B5B4E}
+.tname small.today{color:#3B2416;font-weight:600}
+.more{flex:none;min-height:44px;padding:0 12px;border:0;border-radius:22px;background:#EFE2D2;color:#6F4E37;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.tmenu{margin:6px 0 4px 56px;padding:4px 12px 12px;background:#F8F1E9;border-radius:14px}
+.hint{margin:8px 0 0;padding:10px 12px;background:#F8F1E9;border-radius:12px;font-size:14px}
 .muted{color:#6B5B4E;font-size:14px;margin:6px 0}
 .foot{text-align:center;color:#6B5B4E;font-size:12px;margin-top:6px}
 nav{position:fixed;left:0;right:0;bottom:0;background:#EFE2D2;padding-bottom:env(safe-area-inset-bottom);z-index:5}
-nav .in{max-width:480px;margin:0 auto;display:flex;justify-content:space-around;height:76px;align-items:center}
-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;width:33%;border:0;background:transparent;color:#6B5B4E;font-size:12px;font-family:inherit;cursor:pointer}
-nav button .ic{display:flex;align-items:center;justify-content:center;width:60px;height:38px;border-radius:19px}
-nav button .ic img{height:32px;width:auto;max-width:52px;display:block}
+nav .in{max-width:480px;margin:0 auto;display:flex;justify-content:space-around;height:58px;align-items:center}
+nav button{display:flex;flex-direction:column;align-items:center;gap:1px;width:33%;border:0;background:transparent;color:#6B5B4E;font-size:11px;font-family:inherit;cursor:pointer;padding:0}
+nav button .ic{display:flex;align-items:center;justify-content:center;width:52px;height:30px;border-radius:15px}
+nav button .ic img{height:26px;width:auto;max-width:44px;display:block}
 .sw{flex:none;width:52px;height:32px;border:0;border-radius:16px;background:#D9CBBB;position:relative;cursor:pointer}
 .sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:12px;background:#fff;transition:left .15s}
 .sw.on{background:#6F4E37}
@@ -95,7 +109,8 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     <h1>Team</h1>
     <div class="card">
       <h2>Mijn teams</h2>
-      <div id="myTeams"></div>
+      <p class="muted">Kies met het rondje voor welk team je vandaag meedoet. Via Meer nodig je collega's uit of verwijder je een team.</p>
+      <div id="myTeams" role="radiogroup" aria-label="Team voor vandaag"></div>
     </div>
     <div class="card">
       <h2>Nieuw team maken</h2>
@@ -183,7 +198,10 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   var lastDrink = load('kr_lastdrink', null);      // {drink, note}
   if (profile && profile.drink && !lastDrink) { lastDrink = { drink: fixDrink(profile.drink), note: clean(profile.note, 40) }; save('kr_lastdrink', lastDrink); }
   var teams = load('kr_teams', []);                // [{code, name}]
-  var active = load('kr_active', null);
+  var active = load('kr_active', null);          // laatst bekeken team
+  var today = load('kr_today', null);            // team waarmee je vandaag meedoet
+  if (!today && active && teams.some(function (t) { return t.code === active; })) { today = active; save('kr_today', today); }
+  var menuOpen = null;
 
   function myDrink(c) { return drinks[c] || lastDrink || { drink: 'Koffie', note: '' }; }
 
@@ -386,7 +404,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     ensureMe();
     if (forcePresent) {
       var me = members.get(pid);
-      if (me && !me.present) publish({ k: 'present', pid: pid, v: true });
+      if (me && !me.present && code === today) publish({ k: 'present', pid: pid, v: true });
       forcePresent = false;
     }
   }
@@ -401,7 +419,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function ensureMe() {
     if (!profile || !profile.name || !code) return;
     var d = myDrink(code), m = members.get(pid);
-    if (!m || m.name !== profile.name || m.drink !== d.drink || m.note !== (d.note || '')) publish(joinEvent(code));
+    if (!m || m.name !== profile.name || m.drink !== d.drink || m.note !== (d.note || '')) publish(joinEvent(code, code === today));
   }
 
   // ---------- teams ----------
@@ -421,20 +439,21 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     if (!teams.some(function (t) { return t.code === c; })) { teams.push({ code: c, name: name || 'Team' }); save('kr_teams', teams); }
     loadCache(c);
     if (name && !room) room = { name: name };
-    try { history.replaceState(null, '', '#' + c); } catch (e) { /* negeren */ }
     connect();
     renderAll(); renderDrinks();
   }
 
-  // Kies je team van vandaag: in al je andere teams doe je dan automatisch niet mee.
+  // Kies je team voor vandaag: in al je andere teams doe je dan automatisch niet mee.
+  // (Alleen kijken naar een ander team via openTeam verandert hier niets aan.)
   function activateTeam(c, name) {
+    today = c; save('kr_today', today);
     teams.forEach(function (t) {
       if (t.code !== c) sendToTeam(t.code, { k: 'present', pid: pid, v: false });
     });
     if (c === code) {
       var me = members.get(pid);
       if (me && !me.present) publish({ k: 'present', pid: pid, v: true });
-      renderAll();
+      renderAll(); renderDrinks();
     } else {
       forcePresent = true;
       openTeam(c, name);
@@ -448,18 +467,21 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   }
 
   function removeTeam(c) {
-    if (!demo || c !== code) {
-      if (profile) sendToTeam(c, { k: 'leave', pid: pid });
-    }
+    var wasView = c === code, wasToday = today === c;
+    if (profile && !(demo && wasView)) sendToTeam(c, { k: 'leave', pid: pid });
     teams = teams.filter(function (x) { return x.code !== c; }); save('kr_teams', teams);
     delete drinks[c]; save('kr_drinks', drinks);
     try { localStorage.removeItem('kr_c_' + c); } catch (e) { /* negeren */ }
-    if (c === code) {
+    if (wasView) {
       teardown(); code = null; topic = null; room = null; members = new Map(); times = {}; lastDraw = null;
       active = null; save('kr_active', null);
-      try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* negeren */ }
-      if (teams.length) activateTeam(teams[0].code);
     }
+    if (wasToday) { today = null; save('kr_today', null); }
+    if (teams.length) {
+      if (wasToday) activateTeam(teams[0].code);
+      else if (wasView) openTeam(today && teams.some(function (t) { return t.code === today; }) ? today : teams[0].code);
+    }
+    menuOpen = null;
     renderAll(); renderDrinks();
   }
 
@@ -511,7 +533,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   // ---------- delen ----------
   function baseUrl() { return location.href.split('#')[0]; }
   function inviteUrl(c) { return baseUrl() + '#' + c; }
-  function inviteText(t) { return 'Doe mee met team "' + t.name + '" in de koffieloting ☕ ' + inviteUrl(t.code); }
+  function inviteText(t) { return '☕ Wie haalt er koffie voor ' + t.name + '?\nDoe mee met de koffieloting: ' + inviteUrl(t.code); }
   function listText() {
     var lines = [];
     if (lastDraw) { lines.push('Leukste collega: ' + lastDraw.wname + ' ☕'); lines.push(''); }
@@ -553,13 +575,22 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
 
   function teamCard() {
     var all = Array.from(members.values());
-    var h = '<div class="card"><h2>Jouw team vandaag</h2>';
+    var isToday = code === today;
+    var h = '<div class="card"><h2>Jouw team</h2>';
     if (teams.length > 1) {
-      h += '<div class="tchips" role="group" aria-label="Kies je team">' + teams.map(function (t) {
-        return '<button type="button" class="tchip' + (t.code === code ? ' cur' : '') + '" data-open="' + esc(t.code) + '" aria-pressed="' + (t.code === code) + '">' + esc(t.name) + '</button>';
-      }).join('') + '</div><p class="muted">Wissel je van team, dan doe je in je andere teams niet mee.</p>';
+      h += '<div class="tchips" role="group" aria-label="Bekijk een team">' + teams.map(function (t) {
+        return '<button type="button" class="tchip' + (t.code === code ? ' cur' : '') + '" data-view="' + esc(t.code) + '" aria-pressed="' + (t.code === code) + '">' +
+          esc(t.name) + (t.code === today ? ' · vandaag' : '') + '</button>';
+      }).join('') + '</div>';
     } else {
       h += '<p class="teamname">' + esc(room ? room.name : 'Team') + '</p>';
+    }
+    if (isToday) {
+      if (teams.length > 1) h += '<p class="hint">Vandaag doe je mee met dit team. In je andere teams doe je vandaag niet mee.</p>';
+    } else {
+      var tt = teams.filter(function (t) { return t.code === today; })[0];
+      h += '<div class="hint">Je kijkt alleen mee. ' + (tt ? 'Vandaag doe je mee met <b>' + esc(tt.name) + '</b>.' : 'Je doet vandaag nog niet mee.') +
+        '<button type="button" class="btn alt small" data-open="' + esc(code) + '">Vandaag meedoen met dit team</button></div>';
     }
     h += '<h3>Wie zitten er in dit team</h3>';
     if (all.length) {
@@ -624,14 +655,18 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     var h = '';
     if (!teams.length) h = '<p class="muted">Je zit nog niet in een team.</p>';
     else h = teams.map(function (t) {
-      var cur = t.code === code;
-      return '<div class="trow"><b>' + esc(t.name) + '</b>' + (cur ? '<span class="badge">vandaag</span>' : '') + '<div class="tbtns">' +
-        (cur ? '' : '<button type="button" class="mini" data-open="' + esc(t.code) + '">Kies voor vandaag</button>') +
-        '<a class="mini wa" target="_blank" rel="noopener" href="' + waLink(inviteText(t)) + '">Uitnodigen</a>' +
-        '<button type="button" class="mini" data-act="copyInvite" data-team="' + esc(t.code) + '">Kopieer link</button>' +
-        (canShare ? '<button type="button" class="mini" data-act="shareInvite" data-team="' + esc(t.code) + '">Delen</button>' : '') +
-        '<button type="button" class="mini' + (rmArm === t.code ? ' arm' : '') + '" data-rm="' + esc(t.code) + '" aria-label="Verwijder team ' + esc(t.name) + '">' +
-        (rmArm === t.code ? 'Zeker?' : 'Verwijder') + '</button></div></div>';
+      var isT = t.code === today, open = menuOpen === t.code;
+      return '<div class="trow"><div class="tmain">' +
+        '<button type="button" class="radio" role="radio" aria-checked="' + isT + '" data-today="' + esc(t.code) + '" aria-label="Kies ' + esc(t.name) + ' voor vandaag"><i></i></button>' +
+        '<div class="tname"><b>' + esc(t.name) + '</b><small class="' + (isT ? 'today' : '') + '">' + (isT ? 'Vandaag meedoen' : 'Doet vandaag niet mee') + '</small></div>' +
+        '<button type="button" class="more" data-menu="' + esc(t.code) + '" aria-expanded="' + open + '" aria-haspopup="true">Meer ' + (open ? '▴' : '▾') + '</button></div>' +
+        (open ? '<div class="tmenu">' +
+          '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(inviteText(t)) + '">Uitnodigen via WhatsApp</a>' +
+          '<button type="button" class="btn alt small" data-act="copyInvite" data-team="' + esc(t.code) + '">Kopieer link</button>' +
+          (canShare ? '<button type="button" class="btn alt small" data-act="shareInvite" data-team="' + esc(t.code) + '">Deel op een andere manier</button>' : '') +
+          '<button type="button" class="btn alt small' + '" style="' + (rmArm === t.code ? 'background:#F3D6CF;border-color:#F3D6CF;color:#7A1F10' : '') + '" data-rm="' + esc(t.code) + '">' +
+          (rmArm === t.code ? 'Zeker weten? Tik nog eens' : 'Team verwijderen') + '</button></div>' : '') +
+        '</div>';
     }).join('');
     $('myTeams').innerHTML = h;
 
@@ -727,7 +762,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-rm],[data-tab]');
+    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-rm],[data-tab],[data-view],[data-today],[data-menu]');
     if (!t) return;
     var d = t.dataset;
     if (d.tab) { showTab(d.tab); return; }
@@ -743,6 +778,12 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     } else if (d.del) {
       if (delArm === d.del) { publish({ k: 'leave', pid: d.del }); delArm = null; }
       else { delArm = d.del; renderTeam(); setTimeout(function () { if (delArm === d.del) { delArm = null; renderTeam(); } }, 3000); }
+    } else if (d.view) {
+      if (d.view !== code) openTeam(d.view);
+    } else if (d.today) {
+      activateTeam(d.today);
+    } else if (d.menu) {
+      menuOpen = menuOpen === d.menu ? null : d.menu; rmArm = null; renderTeam();
     } else if (d.open) {
       activateTeam(d.open);
     } else if (d.rm) {
@@ -751,15 +792,21 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     }
   });
 
+  function clearHash() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* negeren */ } }
+
   window.addEventListener('hashchange', function () {
     var h = location.hash.replace('#', '');
-    if (/^[a-z0-9]{6,20}$/.test(h) && h !== code) activateTeam(h);
+    if (/^[a-z0-9]{6,20}$/.test(h)) { clearHash(); activateTeam(h); }
   });
 
   // ---------- start ----------
+  // Een link met #code is een uitnodiging: sluit aan en doe vandaag mee. Daarna wissen we de #code,
+  // zodat opnieuw openen of herstellen van de app je niet ongemerkt naar dat team terugzet.
   var h0 = location.hash.replace('#', '');
-  if (/^[a-z0-9]{6,20}$/.test(h0)) activateTeam(h0);
-  else if (active && teams.some(function (t) { return t.code === active; })) openTeam(active);
+  function known(c) { return c && teams.some(function (t) { return t.code === c; }); }
+  if (/^[a-z0-9]{6,20}$/.test(h0)) { clearHash(); activateTeam(h0); }
+  else if (known(today)) openTeam(today);
+  else if (known(active)) openTeam(active);
   else if (teams.length) openTeam(teams[0].code);
   else renderAll();
   if (profile && profile.name) showTab('loten'); else showTab(teams.length || code ? 'drinken' : 'loten');
