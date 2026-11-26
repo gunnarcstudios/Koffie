@@ -29,5 +29,16 @@
                     android:pathPrefix="${webPath}" />
             </intent-filter>
         </activity>
+
+        <!-- Voor het delen van het Excel-bestand met statistieken -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>

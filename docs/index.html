@@ -11,86 +11,112 @@
 <meta property="og:description" content="Doe mee met de koffieloting van je afdeling: loot wie er koffie haalt.">
 <meta property="og:image" content="https://gunnarcstudios.github.io/Koffie/img/loten.png">
 <style>
+:root{--pri:#6F4E37;--bg:#F8F1E9;--tx:#3B2416;--acc:#E8C9A0;--soft:#EFE2D2;--mut:#6B5B4E;--line:#A08E7E;--focus:#A9714B;--off:#D9CBBB;--tx2:#4A3426;--card:#fff;--onpri:#fff;--logobg:transparent}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
-body{background:#F8F1E9;color:#3B2416;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
 #app{max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;padding:12px 16px 80px}
-h1{margin:10px 0 6px;font-size:28px;font-weight:800;color:#6F4E37;text-align:center}
+h1{margin:10px 0 6px;font-size:28px;font-weight:800;color:var(--pri);text-align:center}
 h2{margin:0 0 10px;font-size:17px}
-h3{margin:16px 0 8px;font-size:14px;color:#6B5B4E;font-weight:600}
+h3{margin:16px 0 8px;font-size:14px;color:var(--mut);font-weight:600}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.sub{margin:0 0 14px;text-align:center;color:#6B5B4E;font-size:16px}
-.logo{display:block;margin:4px auto 8px;width:100%;max-width:150px;height:auto}
+.sub{margin:0 0 14px;text-align:center;color:var(--mut);font-size:16px}
+.logo{display:block;margin:4px auto 8px;width:100%;max-width:150px;height:auto;background:var(--logobg);border-radius:28px}
 .logo.small{max-width:190px}
-.card{background:#fff;border-radius:18px;padding:16px;margin:0 0 12px}
-.banner{background:#E8C9A0;border-radius:14px;padding:12px 14px;margin:10px 0 0;font-size:14px;font-weight:500}
-label{display:block;font-size:13px;color:#6B5B4E;margin:10px 0 4px}
-input,select{width:100%;height:48px;border:1px solid #A08E7E;border-radius:10px;padding:0 12px;font-size:16px;background:#fff;color:#3B2416;font-family:inherit}
-input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid #A9714B;outline-offset:2px}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;margin-top:12px;border:0;border-radius:30px;background:#6F4E37;color:#fff;font-size:17px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit}
+.card{background:var(--card);border-radius:18px;padding:16px;margin:0 0 12px}
+.banner{background:var(--acc);border-radius:14px;padding:12px 14px;margin:10px 0 0;font-size:14px;font-weight:500}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+input,select{width:100%;height:48px;border:1px solid var(--line);border-radius:10px;padding:0 12px;font-size:16px;background:var(--card);color:var(--tx);font-family:inherit}
+input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;margin-top:12px;border:0;border-radius:30px;background:var(--pri);color:var(--onpri);font-size:17px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit}
 .btn.big{min-height:60px;font-size:18px}
-.btn.alt{background:transparent;border:1.5px solid #6F4E37;color:#6F4E37}
-.btn.wa{background:#1B7F43}
+.btn.alt{background:transparent;border:1.5px solid var(--pri);color:var(--pri)}
+.btn.wa{background:#1B7F43;color:#fff}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.small{min-height:46px;font-size:15px}
-.mini{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border:1.5px solid #6F4E37;border-radius:22px;background:transparent;color:#6F4E37;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit}
+.mini{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border:1.5px solid var(--pri);border-radius:22px;background:transparent;color:var(--pri);font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit}
 .mini.wa{background:#1B7F43;border-color:#1B7F43;color:#fff}
 .mini.arm{background:#F3D6CF;border-color:#F3D6CF;color:#7A1F10}
-.mini.cur{background:#6F4E37;color:#fff}
+.mini.cur{background:var(--pri);color:var(--onpri)}
 .hero{text-align:center;padding:22px 12px;border-radius:24px;margin:8px 0 6px}
-.hero.win{background:#E8C9A0}
+.hero.win{background:var(--acc)}
 .hero.pop{animation:pop .5s ease-out}
-.hero .big{font-size:42px;font-weight:800;color:#6F4E37;line-height:1.1;word-break:break-word;margin:4px 0}
+.hero .big{font-size:42px;font-weight:800;color:var(--pri);line-height:1.1;word-break:break-word;margin:4px 0}
 .hero .em{font-size:56px;line-height:1.1}
-.reel{font-size:40px;font-weight:800;color:#6F4E37;min-height:50px;word-break:break-word}
+.reel{font-size:40px;font-weight:800;color:var(--pri);min-height:50px;word-break:break-word}
 .chips,.tchips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:flex;flex-direction:column;align-items:flex-start;min-height:48px;padding:6px 14px;border:0;border-radius:24px;background:#E8C9A0;color:#3B2416;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-align:left}
-.chip small{font-size:12px;font-weight:400;color:#4A3426}
-.chip.off{background:#EFE2D2;color:#6B5B4E;text-decoration:line-through}
-.chip.off small{color:#6B5B4E}
-.tchip{min-height:48px;padding:0 18px;border:1.5px solid #6F4E37;border-radius:24px;background:transparent;color:#6F4E37;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer}
-.tchip.cur{background:#6F4E37;color:#fff}
-.teamname{margin:0;font-size:20px;font-weight:700;color:#6F4E37}
-.row{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid #EFE2D2}
+.chip{display:flex;flex-direction:column;align-items:flex-start;min-height:48px;padding:6px 14px;border:0;border-radius:24px;background:var(--acc);color:var(--tx);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-align:left}
+.chip small{font-size:12px;font-weight:400;color:var(--tx2)}
+.chip.off{background:var(--soft);color:var(--mut);text-decoration:line-through}
+.chip.off small{color:var(--mut)}
+.tchip{min-height:48px;padding:0 18px;border:1.5px solid var(--pri);border-radius:24px;background:transparent;color:var(--pri);font-family:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.tchip.cur{background:var(--pri);color:var(--onpri)}
+.teamname{margin:0;font-size:20px;font-weight:700;color:var(--pri)}
+.row{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--soft)}
 .row:first-child{border-top:0}
 .who{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
-.who span{font-size:14px;color:#6B5B4E}
-.who small{font-size:12px;color:#6B5B4E}
-.x{flex:none;min-width:44px;min-height:44px;border:0;border-radius:22px;background:transparent;color:#6B5B4E;font-size:15px;cursor:pointer;font-family:inherit;padding:0 10px}
+.who span{font-size:14px;color:var(--mut)}
+.who small{font-size:12px;color:var(--mut)}
+.x{flex:none;min-width:44px;min-height:44px;border:0;border-radius:22px;background:transparent;color:var(--mut);font-size:15px;cursor:pointer;font-family:inherit;padding:0 10px}
 .x.arm{background:#F3D6CF;color:#7A1F10;font-weight:600}
-.trow{padding:12px 0;border-top:1px solid #EFE2D2}
+.trow{padding:12px 0;border-top:1px solid var(--soft)}
 .trow:first-child{border-top:0}
 .trow b{font-size:17px}
-.badge{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:12px;background:#E8C9A0;font-size:12px;font-weight:600}
+.badge{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:12px;background:var(--acc);font-size:12px;font-weight:600}
 .tmain{display:flex;align-items:center;gap:12px}
 .radio{flex:none;width:44px;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.radio i{width:26px;height:26px;border:2.5px solid #6F4E37;border-radius:50%;display:block;position:relative}
-.radio[aria-checked=true] i::after{content:"";position:absolute;inset:4px;background:#6F4E37;border-radius:50%}
+.radio i{width:26px;height:26px;border:2.5px solid var(--pri);border-radius:50%;display:block;position:relative}
+.radio[aria-checked=true] i::after{content:"";position:absolute;inset:4px;background:var(--pri);border-radius:50%}
 .tname{flex:1;min-width:0;display:flex;flex-direction:column}
-.tname small{font-size:12px;color:#6B5B4E}
-.tname small.today{color:#3B2416;font-weight:600}
-.more{flex:none;min-height:44px;padding:0 12px;border:0;border-radius:22px;background:#EFE2D2;color:#6F4E37;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
-.tmenu{margin:6px 0 4px 56px;padding:4px 12px 12px;background:#F8F1E9;border-radius:14px}
-.hint{margin:8px 0 0;padding:10px 12px;background:#F8F1E9;border-radius:12px;font-size:14px}
-.muted{color:#6B5B4E;font-size:14px;margin:6px 0}
-.foot{text-align:center;color:#6B5B4E;font-size:12px;margin-top:6px}
-nav{position:fixed;left:0;right:0;bottom:0;background:#EFE2D2;z-index:5}
+.tname small{font-size:12px;color:var(--mut)}
+.tname small.today{color:var(--tx);font-weight:600}
+.more{flex:none;min-height:44px;padding:0 12px;border:0;border-radius:22px;background:var(--soft);color:var(--pri);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.tmenu{margin:6px 0 4px 56px;padding:4px 12px 12px;background:var(--bg);border-radius:14px}
+.hint{margin:8px 0 0;padding:10px 12px;background:var(--bg);border-radius:12px;font-size:14px}
+.muted{color:var(--mut);font-size:14px;margin:6px 0}
+.foot{text-align:center;color:var(--mut);font-size:12px;margin-top:6px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--soft);z-index:5}
 nav .in{max-width:480px;margin:0 auto;display:flex;justify-content:space-around;height:58px;align-items:center}
-nav button{display:flex;flex-direction:column;align-items:center;gap:1px;width:33%;border:0;background:transparent;color:#6B5B4E;font-size:11px;font-family:inherit;cursor:pointer;padding:0}
+nav button{display:flex;flex-direction:column;align-items:center;gap:1px;width:25%;border:0;background:transparent;color:var(--mut);font-size:11px;font-family:inherit;cursor:pointer;padding:0}
 nav button .ic{display:flex;align-items:center;justify-content:center;width:52px;height:30px;border-radius:15px}
 nav button .ic img{height:26px;width:auto;max-width:44px;display:block}
-.sw{flex:none;width:52px;height:32px;border:0;border-radius:16px;background:#D9CBBB;position:relative;cursor:pointer}
+.sw{flex:none;width:52px;height:32px;border:0;border-radius:16px;background:var(--off);position:relative;cursor:pointer}
 .sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:12px;background:#fff;transition:left .15s}
-.sw.on{background:#6F4E37}
+.sw.on{background:var(--pri)}
 .sw.on::after{left:24px}
 .row.off .who{opacity:.55}
 .order{margin:0;padding:0;list-style:none;font-size:16px}
-.order li{padding:8px 0;border-top:1px solid #EFE2D2}
+.order li{padding:8px 0;border-top:1px solid var(--soft)}
 .order li:first-child{border-top:0}
-.order li span{display:block;font-size:14px;color:#6B5B4E;margin-top:2px}
-nav button[aria-current=page]{color:#3B2416;font-weight:600}
-nav button[aria-current=page] .ic{background:#E8C9A0}
+.order li span{display:block;font-size:14px;color:var(--mut);margin-top:2px}
+nav button[aria-current=page]{color:var(--tx);font-weight:600}
+nav button[aria-current=page] .ic{background:var(--acc)}
+.pro-list{margin:0 0 4px;padding:0;list-style:none}
+.pro-list li{position:relative;padding:7px 0 7px 30px;font-size:15px}
+.pro-list li::before{content:"✓";position:absolute;left:4px;top:7px;color:var(--pri);font-weight:800}
+.price{font-size:32px;font-weight:800;color:var(--pri);text-align:center;margin:10px 0 0}
+.price small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+.sbtns{display:flex;flex-wrap:wrap;gap:6px}
+.sbtn{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:64px;min-height:44px;padding:2px;border:0;background:none;color:var(--mut);font-size:12px;font-family:inherit;cursor:pointer}
+.sbtn i{display:block;width:52px;height:52px;border-radius:16px;border:3px solid transparent;outline:1px solid var(--off)}
+.sbtn[aria-pressed=true] i{border-color:var(--tx)}
+.sbtn[aria-pressed=true]{color:var(--tx);font-weight:600}
+.kpis{display:flex;gap:8px;margin:4px 0 6px}
+.kpi{flex:1;background:var(--bg);border-radius:14px;padding:10px 4px;text-align:center}
+.kpi b{display:block;font-size:22px;color:var(--pri)}
+.kpi span{font-size:12px;color:var(--mut)}
+.bar{display:flex;align-items:center;gap:8px;padding:5px 0}
+.bar .n{flex:0 0 96px;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .t{flex:1;background:var(--soft);border-radius:8px;height:22px;overflow:hidden}
+.bar .t i{display:block;height:100%;background:var(--pri);border-radius:8px;min-width:4px}
+.bar .v{flex:0 0 40px;text-align:right;font-size:14px;font-weight:600}
+.setrow{display:flex;align-items:center;gap:12px}
+.setrow div{flex:1}
+.setrow small{display:block;color:var(--mut);font-size:13px}
+.lnk{display:block;min-height:36px;padding:6px 0;border:0;background:none;color:var(--pri);font-size:13px;font-weight:600;text-align:left;cursor:pointer;font-family:inherit}
+em.badge{font-style:normal}
+.foot a{color:inherit}
 @keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.hero.pop{animation:none}}
 </style>
@@ -98,6 +124,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
 <body>
 <div id="app">
   <div class="banner" id="banner" hidden></div>
+  <div class="banner" id="fullNote" hidden></div>
 
   <section id="tab-loten">
     <h1 class="sr">Wie haalt er koffie?</h1>
@@ -111,6 +138,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       <h2>Mijn teams</h2>
       <p class="muted">Kies met het rondje voor welk team je vandaag meedoet. Via Meer nodig je collega's uit of verwijder je een team.</p>
       <div id="myTeams" role="radiogroup" aria-label="Team voor vandaag"></div>
+      <div id="limitNote"></div>
     </div>
     <div class="card">
       <h2>Nieuw team maken</h2>
@@ -126,8 +154,21 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       <button class="btn alt small" type="button" id="joinTeam">Sluit aan</button>
       <p class="muted" id="joinMsg" aria-live="polite"></p>
     </div>
+    <div class="card" id="addCard" hidden>
+      <h2>Collega toevoegen</h2>
+      <p class="muted">Alleen voor beheerders. Handig voor collega's die de app niet hebben.</p>
+      <label for="addName">Naam</label>
+      <input id="addName" maxlength="30" autocomplete="off">
+      <label for="addDrink">Drankje</label>
+      <select id="addDrink"></select>
+      <label for="addNote">Opmerking (melk, suiker…)</label>
+      <input id="addNote" maxlength="40" autocomplete="off">
+      <button class="btn alt small" type="button" id="addColl">Voeg toe</button>
+      <p class="muted" id="addMsg" aria-live="polite"></p>
+    </div>
     <div class="card" id="membersCard" hidden>
       <h2 id="membersTitle">Leden</h2>
+      <p class="muted" id="roleNote"></p>
       <div id="memberList"></div>
     </div>
   </section>
@@ -141,6 +182,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       <form id="nameForm" autocomplete="off">
         <label for="jname">Jouw naam</label>
         <input id="jname" maxlength="30" required>
+        <p class="muted">Je naam en drankje zijn zichtbaar voor je teamgenoten. <a href="privacy.html" style="color:inherit">Privacy</a></p>
         <button class="btn small" type="submit">Opslaan</button>
       </form>
       <p class="muted" id="nameMsg" aria-live="polite"></p>
@@ -148,13 +190,19 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     <div id="drinkCards"></div>
   </section>
 
+  <section id="tab-pro" hidden>
+    <div id="proBody"></div>
+  </section>
+
   <p class="foot" id="status"></p>
+  <p class="foot" id="ver">versie 8.1 · <a href="privacy.html">Privacyverklaring</a></p>
 </div>
 
 <nav aria-label="Hoofdmenu"><div class="in">
   <button type="button" data-tab="loten" aria-current="page"><span class="ic"><img src="img/loten-s.png" alt=""></span>Loten</button>
   <button type="button" data-tab="team"><span class="ic"><img src="img/team-s.png" alt=""></span>Team</button>
   <button type="button" data-tab="drinken"><span class="ic"><img src="img/drinken-s.png" alt=""></span>Mijn drinken</button>
+  <button type="button" data-tab="pro"><span class="ic" style="font-size:20px" aria-hidden="true">⭐</span>Pro</button>
 </div></nav>
 
 <script>
@@ -164,6 +212,39 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   var NTFY = 'https://ntfy.sh';
   var DRINKS = ['Koffie', 'Cappuccino', 'Latte macchiato', 'Espresso', 'Thee', 'Warme chocolademelk', 'Water', 'Anders'];
   var ALPHA = 'abcdefghjkmnpqrstuvwxyz23456789';
+
+  // ---------- Pro ----------
+  var FREE_TEAMS = 1, FREE_MEMBERS = 10;
+  var PRO_PRICE = '€ 3,99';          // pas hier de prijs aan
+  var PAY_URL = '';                  // plak hier je betaallink (bijv. Mollie of Stripe Payment Link)
+  var SALT = 'koffie-pro-fed6d825b1ad503d';  // niet wijzigen na het uitgeven van codes
+  var CODE_ALPHA = 'ABCDEFGHJKMNPQRSTVWXYZ23456789';
+  var THEMES = [
+    { id: 'koffie', name: 'Koffie', v: { pri: '#6F4E37', bg: '#F8F1E9', tx: '#3B2416', acc: '#E8C9A0', soft: '#EFE2D2', mut: '#6B5B4E', line: '#A08E7E', focus: '#A9714B', off: '#D9CBBB', tx2: '#4A3426', card: '#FFFFFF', onpri: '#FFFFFF', logobg: 'transparent' } },
+    { id: 'matcha', name: 'Matcha', v: { pri: '#4F6B3A', bg: '#F1F5EA', tx: '#1F2D17', acc: '#CFE0B5', soft: '#E2EBD3', mut: '#55664A', line: '#8A9C7C', focus: '#6E8F4F', off: '#CBD8BC', tx2: '#2E3F23', card: '#FFFFFF', onpri: '#FFFFFF', logobg: 'transparent' } },
+    { id: 'oceaan', name: 'Oceaan', v: { pri: '#2F5F8A', bg: '#EEF4F9', tx: '#14283A', acc: '#BFD8EE', soft: '#DFEAF4', mut: '#4D6378', line: '#8AA0B5', focus: '#3F78AD', off: '#C9D8E6', tx2: '#1F3A52', card: '#FFFFFF', onpri: '#FFFFFF', logobg: 'transparent' } },
+    { id: 'framboos', name: 'Framboos', v: { pri: '#A3304F', bg: '#FBF0F2', tx: '#3A1420', acc: '#F2C3CE', soft: '#F5DFE4', mut: '#7A4A58', line: '#B58A97', focus: '#C2506F', off: '#E8CDD4', tx2: '#4F1E2C', card: '#FFFFFF', onpri: '#FFFFFF', logobg: 'transparent' } },
+    { id: 'espresso', name: 'Espresso (donker)', v: { pri: '#D9A066', bg: '#1E1612', tx: '#F3E6D8', acc: '#5A3F2B', soft: '#2D211A', mut: '#BFA894', line: '#7A6656', focus: '#E8B77F', off: '#4A3A2E', tx2: '#E3D3C2', card: '#2A201A', onpri: '#2A1A10', logobg: '#F8F1E9' } }
+  ];
+  function cyrb53(str) {
+    var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (var i = 0; i < str.length; i++) {
+      var ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507); h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507); h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1 >>> 0);
+  }
+  function codeCheck(body) {
+    var n = cyrb53(SALT + body), out = '';
+    for (var i = 0; i < 4; i++) { out += CODE_ALPHA[n % CODE_ALPHA.length]; n = Math.floor(n / CODE_ALPHA.length); }
+    return out;
+  }
+  function validCode(text) {
+    var c = String(text || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    return c.length === 12 && codeCheck(c.slice(0, 8)) === c.slice(8);
+  }
 
   // ---------- hulpfuncties ----------
   function $(id) { return document.getElementById(id); }
@@ -202,13 +283,34 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   var today = load('kr_today', null);            // team waarmee je vandaag meedoet
   if (!today && active && teams.some(function (t) { return t.code === active; })) { today = active; save('kr_today', today); }
   var menuOpen = null;
+  var pro = load('kr_pro', null);                  // {ok:true}
+  var stats = load('kr_stats', {});                // {teamcode: [{d,t,w,wn,o,n}]}
+  var fair = load('kr_fair', false);
+  var statScope = null, statPeriod = 'dag', spendBusy = false;
+  var POINTS_COST = 20;
+  var proMsg = '', full = false;
+  function isPro() { return !!(pro && pro.ok); }
+  function teamIsPro() { return isPro() || !!(room && room.pro); }
+  function canAddTeam(c) { return isPro() || teams.length < FREE_TEAMS || teams.some(function (t) { return t.code === c; }); }
+  function themeNow() {
+    var id = isPro() ? load('kr_theme', 'koffie') : 'koffie';
+    return THEMES.filter(function (t) { return t.id === id; })[0] || THEMES[0];
+  }
+  function applyTheme() {
+    var th = themeNow(), st = document.documentElement.style;
+    Object.keys(th.v).forEach(function (k) { st.setProperty('--' + k, th.v[k]); });
+    var mt = document.querySelector('meta[name=theme-color]'); if (mt) mt.setAttribute('content', th.v.bg);
+    try { if (window.KoffieApp && window.KoffieApp.setBars) window.KoffieApp.setBars(th.v.bg, th.v.soft); } catch (e) { /* negeren */ }
+  }
+  function upsell(msg) { proMsg = msg; showTab('pro'); }
+  applyTheme();
 
   function myDrink(c) { return drinks[c] || lastDrink || { drink: 'Koffie', note: '' }; }
 
   // ---------- staat van het actieve team ----------
   var code = null, topic = null, es = null;
   var opened = false, demo = false, offline = false, heard = false, forcePresent = false;
-  var room = null, members = new Map(), times = {}, seenDraw = {}, lastDraw = null, seen = new Set();
+  var room = null, members = new Map(), times = {}, uses = {}, usedDid = {}, seenDraw = {}, lastDraw = null, seen = new Set();
   var anim = null, lastAnimDid = null, popNow = false;
   var delArm = null, rmArm = null, tab = 'loten';
   var syncTimer = null, demoTimer = null, cacheTimer = null, notFound = false;
@@ -223,8 +325,12 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     cacheTimer = setTimeout(function () {
       save('kr_c_' + code, {
         name: room ? room.name : null,
+        pro: !!(room && room.pro),
+        admins: room && room.admins ? room.admins : [],
         members: Array.from(members.values()),
         times: times,
+        uses: uses,
+        used: Object.keys(usedDid).slice(-20),
         dids: Object.keys(seenDraw).slice(-40),
         last: lastDraw
       });
@@ -232,13 +338,15 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   }
   function loadCache(c) {
     var d = load('kr_c_' + c, null);
-    room = null; members = new Map(); times = {}; seenDraw = {}; lastDraw = null;
+    room = null; members = new Map(); times = {}; uses = {}; usedDid = {}; seenDraw = {}; lastDraw = null;
     if (!d) return false;
-    if (d.name) room = { name: d.name };
+    if (d.name) room = { name: d.name, pro: !!d.pro, admins: Array.isArray(d.admins) ? d.admins : [] };
     (d.members || []).forEach(function (m) {
       if (m && m.pid) members.set(m.pid, { pid: m.pid, name: clean(m.name, 30), drink: fixDrink(m.drink), note: clean(m.note, 40), present: m.present !== false });
     });
     times = d.times || {};
+    uses = d.uses || {};
+    (d.used || []).forEach(function (x) { usedDid[x] = 1; });
     (d.dids || []).forEach(function (x) { seenDraw[x] = 1; });
     lastDraw = d.last || null;
     return members.size > 0 || !!room;
@@ -251,19 +359,63 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     }
   }
 
+  // ---------- rechten en koffiepunten ----------
+  // Een team zonder beheerders (oud team) werkt open: iedereen mag alles, tot iemand beheerder wordt.
+  function openRights() { return !room || !room.admins || !room.admins.length; }
+  function can(by) { return openRights() || room.admins.indexOf(by) >= 0; }
+  function amAdmin() { return can(pid); }
+  // Koffiepunten: 1 punt per keer halen. Een punt van de laatste loting telt pas mee als die ronde niet is overgeslagen.
+  function settled(p) {
+    var prov = (lastDraw && lastDraw.winner === p && !usedDid[lastDraw.did]) ? 1 : 0;
+    return Math.max(0, (times[p] || 0) - POINTS_COST * (uses[p] || 0) - prov);
+  }
+  function dropStat(did) {
+    if (!code || !stats[code]) return;
+    stats[code] = stats[code].filter(function (x) { return x.d !== did; });
+    save('kr_stats', stats);
+  }
+
+  // Elke loting onthouden we op dit toestel (wie haalde, wat werd er besteld), voor de statistieken in Pro.
+  function recordStat(ev, t) {
+    if (!code) return;
+    var arr = stats[code] = stats[code] || [];
+    if (arr.some(function (x) { return x.d === ev.id; })) return;
+    var o = {}, n = 0;
+    if (ev.o && typeof ev.o === 'object') {
+      Object.keys(ev.o).slice(0, 12).forEach(function (k) {
+        var c = Number(ev.o[k]) || 0;
+        if (c > 0 && c < 100) { var dk = fixDrink(clean(k, 30)); o[dk] = (o[dk] || 0) + c; n += c; }
+      });
+    } else presentList().forEach(function (m) { o[m.drink] = (o[m.drink] || 0) + 1; n++; });
+    arr.push({ d: ev.id, t: Math.round(t || 0), w: String(ev.winner), wn: clean(ev.wname, 30), o: o, n: n });
+    if (arr.length > 300) arr.shift();
+    save('kr_stats', stats);
+  }
+
   // ---------- events verwerken ----------
   function apply(ev, msgTime, live) {
     if (!ev || typeof ev !== 'object' || !ev.k || !ev.id || seen.has(ev.id)) return;
     seen.add(ev.id);
+    var by = ev.by ? String(ev.by) : null;
     switch (ev.k) {
       case 'room':
         heard = true;
-        room = { name: clean(ev.name, 40) || 'Team' };
+        if (!room) {
+          room = { name: clean(ev.name, 40) || 'Team', pro: !!ev.pro, admins: Array.isArray(ev.admins) ? ev.admins.slice(0, 20).map(String) : [] };
+        } else {
+          if (ev.pro) room.pro = true;
+          if (by && can(by) && ev.name) room.name = clean(ev.name, 40) || room.name;
+          if (!room.admins.length && Array.isArray(ev.admins) && ev.admins.length) room.admins = ev.admins.slice(0, 20).map(String);
+        }
         syncTeamName();
         break;
       case 'snap':
         heard = true;
-        if (!room) room = { name: clean(ev.name, 40) || 'Team' };
+        if (!room) room = { name: clean(ev.name, 40) || 'Team', pro: !!ev.pro, admins: Array.isArray(ev.a) ? ev.a.slice(0, 20).map(String) : [] };
+        else {
+          if (ev.pro) room.pro = true;
+          if (!room.admins.length && Array.isArray(ev.a)) room.admins = ev.a.slice(0, 20).map(String);
+        }
         (ev.m || []).forEach(function (a) {
           if (a && a[0] && !members.has(a[0])) {
             members.set(String(a[0]), { pid: String(a[0]), name: clean(a[1], 30), drink: fixDrink(a[2]), note: clean(a[3], 40), present: a[4] !== 0 });
@@ -271,40 +423,68 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
         });
         var t = ev.t || {};
         Object.keys(t).forEach(function (k) { times[k] = Math.max(times[k] || 0, Number(t[k]) || 0); });
+        var u = ev.u || {};
+        Object.keys(u).forEach(function (k) { uses[k] = Math.max(uses[k] || 0, Number(u[k]) || 0); });
         (ev.d || []).forEach(function (x) { seenDraw[x] = 1; });
+        (ev.ud || []).forEach(function (x) { usedDid[x] = 1; });
         if (!lastDraw && ev.l) lastDraw = { did: ev.l[0], winner: ev.l[1], wname: clean(ev.l[2], 30), time: msgTime, order: [] };
         syncTeamName();
         break;
       case 'join': {
         if (!ev.pid || !clean(ev.name, 30)) break;
+        var jp = String(ev.pid);
+        if (by && by !== jp && !can(by)) break;   // anderen toevoegen mag alleen een beheerder
         heard = true;
-        var old = members.get(ev.pid);
-        members.set(String(ev.pid), {
-          pid: String(ev.pid), name: clean(ev.name, 30), drink: fixDrink(ev.drink),
+        var old = members.get(jp);
+        members.set(jp, {
+          pid: jp, name: clean(ev.name, 30), drink: fixDrink(ev.drink),
           note: clean(ev.note, 40), present: old ? old.present : (ev.p === false ? false : true)
         });
         break;
       }
       case 'leave':
+        if (by && String(ev.pid) !== by && !can(by)) break;
         heard = true;
         members.delete(ev.pid);
         break;
       case 'present': {
+        if (by && String(ev.pid) !== by && !can(by)) break;
         heard = true;
         var m = members.get(ev.pid);
         if (m) m.present = !!ev.v;
         break;
       }
+      case 'admin': {
+        heard = true;
+        if (!room || !ev.pid) break;
+        var tp = String(ev.pid);
+        if (openRights() ? tp !== by : !can(by)) break;   // zonder beheerders: alleen jezelf aanmelden
+        var list = room.admins.slice(), ix = list.indexOf(tp);
+        if (ev.v && ix < 0) list.push(tp);
+        if (!ev.v && ix >= 0 && list.length > 1) list.splice(ix, 1);   // de laatste beheerder blijft
+        room.admins = list.slice(0, 20);
+        break;
+      }
       case 'draw': {
         heard = true;
+        var spend = ev.spend ? String(ev.spend) : null, spendOk = false, skipName = '';
+        if (spend && !usedDid[spend] && lastDraw && lastDraw.did === spend && lastDraw.winner === by && settled(by) >= POINTS_COST) spendOk = true;
+        if (!can(by) && !spendOk && !(spend && usedDid[spend])) break;   // alleen beheerders loten
+        if (spendOk) {
+          usedDid[spend] = 1; uses[by] = (uses[by] || 0) + 1;
+          if (times[by] > 0) times[by]--;
+          dropStat(spend);
+          var sm = members.get(by); skipName = sm ? sm.name : (lastDraw.wname || '');
+        }
         if (!seenDraw[ev.id]) {
           seenDraw[ev.id] = 1;
           times[ev.winner] = (times[ev.winner] || 0) + 1;
+          recordStat(ev, msgTime);
         }
         var d = {
           did: ev.id, winner: String(ev.winner), wname: clean(ev.wname, 30),
           order: Array.isArray(ev.order) ? ev.order.slice(0, 40).map(function (x) { return clean(x, 30); }) : [],
-          time: msgTime
+          time: msgTime, skip: skipName
         };
         lastDraw = d;
         if (live && Math.abs(Date.now() / 1000 - msgTime) < 30) startAnim(d);
@@ -393,7 +573,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       if (members.size || room) {
         // De server is het team vergeten (12 uur oud). Herstel het vanuit dit toestel.
         var m = Array.from(members.values()).map(function (x) { return [x.pid, x.name, x.drink, x.note, x.present ? 1 : 0]; });
-        var snap = { k: 'snap', name: room ? room.name : 'Team', m: m, t: times, d: Object.keys(seenDraw).slice(-8),
+        var snap = { k: 'snap', name: room ? room.name : 'Team', pro: room && room.pro ? 1 : 0, a: room && room.admins ? room.admins : [], m: m, t: times, u: uses, d: Object.keys(seenDraw).slice(-8), ud: Object.keys(usedDid).slice(-8),
                      l: lastDraw ? [lastDraw.did, lastDraw.winner, lastDraw.wname] : null };
         while (JSON.stringify(snap).length > 3800 && snap.m.length) { snap.m.pop(); }
         publish(snap);
@@ -419,6 +599,13 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function ensureMe() {
     if (!profile || !profile.name || !code) return;
     var d = myDrink(code), m = members.get(pid);
+    // Pro-gebruiker maakt het team Pro, zodat iedereen erin past
+    if (isPro() && room && !room.pro && !demo) publish({ k: 'room', name: room.name, pro: true });
+    // Gratis teams zijn beperkt tot FREE_MEMBERS mensen
+    var wasFull = full;
+    full = !m && members.size >= FREE_MEMBERS && !teamIsPro();
+    if (full !== wasFull) renderAll();
+    if (full) return;
     if (!m || m.name !== profile.name || m.drink !== d.drink || m.note !== (d.note || '')) publish(joinEvent(code, code === today));
   }
 
@@ -431,14 +618,16 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     seen = new Set(); banner(''); setStatus('');
   }
 
+  var LIMIT_TEAMS_MSG = 'Met de gratis versie kun je in 1 team zitten. Met Pro maak je teams of sluit je aan bij zoveel teams als je wilt.';
   function openTeam(c, name) {
     if (!/^[a-z0-9]{6,20}$/.test(c)) return;
+    if (!canAddTeam(c)) { upsell(LIMIT_TEAMS_MSG); return; }
     teardown();
     code = c; topic = topicOf(c);
     active = c; save('kr_active', c);
     if (!teams.some(function (t) { return t.code === c; })) { teams.push({ code: c, name: name || 'Team' }); save('kr_teams', teams); }
     loadCache(c);
-    if (name && !room) room = { name: name };
+    if (name && !room) room = { name: name, pro: false, admins: [] };
     connect();
     renderAll(); renderDrinks();
   }
@@ -446,6 +635,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   // Kies je team voor vandaag: in al je andere teams doe je dan automatisch niet mee.
   // (Alleen kijken naar een ander team via openTeam verandert hier niets aan.)
   function activateTeam(c, name) {
+    if (!canAddTeam(c)) { upsell(LIMIT_TEAMS_MSG); return; }
     today = c; save('kr_today', today);
     teams.forEach(function (t) {
       if (t.code !== c) sendToTeam(t.code, { k: 'present', pid: pid, v: false });
@@ -463,7 +653,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function createTeam(name) {
     var c = newCode(), nm = clean(name, 40) || 'Team';
     activateTeam(c, nm);
-    publish({ k: 'room', name: nm });
+    publish({ k: 'room', name: nm, pro: isPro(), admins: [pid] });
   }
 
   function removeTeam(c) {
@@ -471,9 +661,10 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     if (profile && !(demo && wasView)) sendToTeam(c, { k: 'leave', pid: pid });
     teams = teams.filter(function (x) { return x.code !== c; }); save('kr_teams', teams);
     delete drinks[c]; save('kr_drinks', drinks);
+    delete stats[c]; save('kr_stats', stats);
     try { localStorage.removeItem('kr_c_' + c); } catch (e) { /* negeren */ }
     if (wasView) {
-      teardown(); code = null; topic = null; room = null; members = new Map(); times = {}; lastDraw = null;
+      teardown(); code = null; topic = null; room = null; members = new Map(); times = {}; uses = {}; usedDid = {}; lastDraw = null;
       active = null; save('kr_active', null);
     }
     if (wasToday) { today = null; save('kr_today', null); }
@@ -496,13 +687,24 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   // ---------- loten ----------
   function presentList() { return Array.from(members.values()).filter(function (m) { return m.present; }); }
 
-  function doDraw() {
+  function doDraw(spend) {
     if (anim && !anim.done) return;
+    if (!spend && !amAdmin()) return;
     var present = presentList();
     if (!present.length) return;
     var last = lastDraw ? lastDraw.winner : null;
     var pool = present.length > 1 ? present.filter(function (m) { return m.pid !== last; }) : present;
+    if (spend) pool = present.filter(function (m) { return m.pid !== pid; });   // wie punten inzet, wordt overgeslagen
+    if (!pool.length) return;
     var w = pool[randInt(pool.length)];
+    if (isPro() && fair && pool.length > 1) {
+      // Eerlijk loten: wie minder vaak gehaald heeft, heeft meer kans
+      var mx = 0;
+      pool.forEach(function (x) { mx = Math.max(mx, times[x.pid] || 0); });
+      var wts = pool.map(function (x) { return mx - (times[x.pid] || 0) + 1; });
+      var tot = wts.reduce(function (a, b) { return a + b; }, 0), r = randInt(tot);
+      for (var j = 0; j < pool.length; j++) { if (r < wts[j]) { w = pool[j]; break; } r -= wts[j]; }
+    }
     var order = [], prev = -1;
     for (var i = 0; i < 22; i++) {
       var idx = randInt(present.length);
@@ -510,11 +712,16 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       order.push(present[idx].name); prev = idx;
     }
     order.push(w.name);
-    publish({ k: 'draw', winner: w.pid, wname: w.name, order: order });
+    var o = {};
+    present.forEach(function (m) { o[m.drink] = (o[m.drink] || 0) + 1; });
+    var ev = { k: 'draw', winner: w.pid, wname: w.name, order: order, o: o };
+    if (spend) ev.spend = spend;
+    publish(ev);
   }
 
   function startAnim(d) {
     if (lastAnimDid === d.did) return;
+    spendBusy = false;
     lastAnimDid = d.did;
     if (anim && anim.timer) clearTimeout(anim.timer);
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -560,16 +767,33 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   function nativeShare(text) { try { navigator.share({ text: text }).catch(function () {}); } catch (e) { /* negeren */ } }
 
   // ---------- weergave ----------
-  function renderAll() { renderLoten(); renderTeam(); }
+  function renderAll() { renderLoten(); renderTeam(); renderFull(); renderProStats(); }
+
+  function renderFull() {
+    var el = $('fullNote');
+    if (full && code) {
+      el.innerHTML = 'Dit team zit vol: in de gratis versie passen ' + FREE_MEMBERS + ' mensen. Vraag de oprichter van het team om Pro, of kies zelf Pro.' +
+        '<button type="button" class="btn alt small" data-tab="pro">Bekijk Pro</button>';
+      el.hidden = false;
+    } else el.hidden = true;
+  }
 
   // Eén teamlid met schuifje (doet vandaag wel/niet mee). Opmerking staat direct achter de drank.
+  // Het schuifje en de knoppen zie je alleen als je dat mag: beheerders voor iedereen, andere leden alleen voor zichzelf.
   function memberRow(m, withRemove) {
-    return '<div class="row' + (m.present ? '' : ' off') + '"><div class="who"><b>' + esc(m.name) + (m.pid === pid ? ' (jij)' : '') + '</b><span>' +
-      esc(m.drink) + (m.note ? ' (' + esc(m.note) + ')' : '') + '</span>' +
-      (withRemove ? '<small>' + (times[m.pid] || 0) + '× gehaald</small>' : (m.present ? '' : '<small>doet vandaag niet mee</small>')) + '</div>' +
-      '<button type="button" class="sw' + (m.present ? ' on' : '') + '" data-pid="' + esc(m.pid) + '" role="switch" aria-checked="' + m.present +
-      '" aria-label="Doet vandaag mee: ' + esc(m.name) + '"></button>' +
-      (withRemove ? '<button type="button" class="x' + (delArm === m.pid ? ' arm' : '') + '" data-del="' + esc(m.pid) + '" aria-label="Verwijder ' + esc(m.name) + ' uit het team">' +
+    var adm = !!(room && room.admins && room.admins.indexOf(m.pid) >= 0), me = amAdmin(), mine = m.pid === pid;
+    var pts = settled(m.pid);
+    var sub = withRemove
+      ? '<small>' + (times[m.pid] || 0) + '× gehaald · ' + pts + ' koffiepunt' + (pts === 1 ? '' : 'en') + '</small>'
+      : (m.present ? '' : '<small>doet vandaag niet mee</small>');
+    var admBtn = (withRemove && me && !mine && !openRights())
+      ? '<button type="button" class="lnk" data-adm="' + esc(m.pid) + '" data-v="' + (adm ? '0' : '1') + '">' + (adm ? 'Beheerder weghalen' : 'Maak beheerder') + '</button>' : '';
+    return '<div class="row' + (m.present ? '' : ' off') + '"><div class="who"><b>' + esc(m.name) + (mine ? ' (jij)' : '') +
+      (adm ? ' <em class="badge">beheerder</em>' : '') + '</b><span>' +
+      esc(m.drink) + (m.note ? ' (' + esc(m.note) + ')' : '') + '</span>' + sub + admBtn + '</div>' +
+      ((mine || me) ? '<button type="button" class="sw' + (m.present ? ' on' : '') + '" data-pid="' + esc(m.pid) + '" role="switch" aria-checked="' + m.present +
+        '" aria-label="Doet vandaag mee: ' + esc(m.name) + '"></button>' : '') +
+      ((withRemove && (me || mine)) ? '<button type="button" class="x' + (delArm === m.pid ? ' arm' : '') + '" data-del="' + esc(m.pid) + '" aria-label="Verwijder ' + esc(m.name) + ' uit het team">' +
         (delArm === m.pid ? 'Zeker?' : '✕') + '</button>' : '') + '</div>';
   }
 
@@ -595,7 +819,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     h += '<h3>Wie zitten er in dit team</h3>';
     if (all.length) {
       h += all.map(function (m) { return memberRow(m, false); }).join('') +
-        '<p class="muted">Zet de schuif uit als iemand vandaag niet meedoet. Diegene blijft gewoon in het team.</p>';
+        '<p class="muted">' + (amAdmin() ? 'Zet de schuif uit als iemand vandaag niet meedoet. Diegene blijft gewoon in het team.' : 'Je kunt alleen jezelf in- en uitschakelen. Een beheerder regelt de rest.') + '</p>';
     } else h += '<p class="muted">Nog niemand. Zet je naam en drankje bij Mijn drinken en nodig collega\'s uit via Team.</p>';
     return h + '</div>';
   }
@@ -618,11 +842,17 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     var all = Array.from(members.values()), present = presentList();
     var animating = anim && !anim.done;
     var sub = '<p class="sub">' + esc(room ? room.name : 'Team') + ' · ' + present.length + ' van ' + all.length + ' doen mee</p>';
-    var btn = '<button class="btn big" type="button" data-act="draw"' + (present.length && !animating ? '' : ' disabled') + '>' +
-      (lastDraw ? 'Opnieuw loten' : 'Loot de koffiehaler!') + '</button>';
+    var btn = amAdmin()
+      ? '<button class="btn big" type="button" data-act="draw"' + (present.length && !animating ? '' : ' disabled') + '>' + (lastDraw ? 'Opnieuw loten' : 'Loot de koffiehaler!') + '</button>'
+      : '<p class="muted" style="text-align:center">' + (lastDraw ? 'Alleen een beheerder kan loten. Je ziet de uitslag hier live.' : 'Wacht tot een beheerder de loting start.') + '</p>';
+    var myPts = '';
+    if (members.has(pid)) {
+      var pp = settled(pid);
+      myPts = '<p class="muted" style="text-align:center">Jouw koffiepunten: <b>' + pp + '</b> (met ' + POINTS_COST + ' punten sla je een ronde over)</p>';
+    }
     var h;
     if (animating) {
-      h = sub + '<div class="hero"><div>Wie haalt er koffie…?</div><div class="reel">' + esc(anim.order[anim.i]) + '</div></div>' + btn + teamCard();
+      h = sub + '<div class="hero"><div>Wie haalt er koffie…?</div><div class="reel">' + esc(anim.order[anim.i]) + '</div></div>' + btn + myPts + teamCard();
     } else if (lastDraw) {
       // Per drank: aantal, en daaronder wie het wil, met de opmerking direct achter de naam
       var groups = {};
@@ -633,8 +863,14 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
             return esc(m.name) + (m.note ? ' (' + esc(m.note) + ')' : '');
           }).join(', ') + '</span></li>';
         }).join('');
+      var iWon = lastDraw.winner === pid && !usedDid[lastDraw.did];
+      var canSpend = iWon && settled(pid) >= POINTS_COST && present.some(function (m) { return m.pid !== pid; });
+      var spendBox = canSpend
+        ? '<div class="card" style="margin-top:12px"><h2>Jij bent geloot</h2><p class="muted">Je hebt ' + settled(pid) + ' koffiepunten. Zet ' + POINTS_COST + ' punten in en de loting begint opnieuw zonder jou.</p>' +
+          '<button class="btn small" type="button" data-act="usePoints"' + (spendBusy ? ' disabled' : '') + '>Zet ' + POINTS_COST + ' punten in</button></div>' : '';
       h = sub + '<div class="hero win' + (popNow ? ' pop' : '') + '"><div class="em">🎉</div><div>Vandaag haalt…</div><div class="big">' +
-        esc(lastDraw.wname) + '</div><div>koffie!</div></div>' + btn +
+        esc(lastDraw.wname) + '</div><div>koffie!</div>' +
+        (lastDraw.skip ? '<div class="muted">' + esc(lastDraw.skip) + ' zette ' + POINTS_COST + ' koffiepunten in. Er is opnieuw geloot.</div>' : '') + '</div>' + btn + myPts + spendBox +
         '<div class="card" style="margin-top:12px"><h2>Bestelling</h2><ul class="order">' + lines + '</ul></div>';
       if (present.length) {
         h += '<a class="btn wa small" target="_blank" rel="noopener" href="' + waLink(listText()) + '">Deel bestelling via WhatsApp</a>' +
@@ -644,7 +880,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
       }
       h += teamCard();
     } else {
-      h = '<img class="logo" src="img/loten.png" alt="Wie moet de koffie halen?">' + sub + btn;
+      h = '<img class="logo" src="img/loten.png" alt="Wie moet de koffie halen?">' + sub + btn + myPts;
       if (!present.length) h += '<p class="muted" style="text-align:center">Er doet nog niemand mee.</p>';
       h += '<div style="height:16px"></div>' + teamCard();
     }
@@ -669,9 +905,14 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
         '</div>';
     }).join('');
     $('myTeams').innerHTML = h;
+    $('limitNote').innerHTML = isPro() ? '' : '<p class="muted">Gratis versie: 1 team en tot ' + FREE_MEMBERS + ' mensen per team. <button type="button" class="mini" data-tab="pro">Meer met Pro</button></p>';
 
     $('membersCard').hidden = !code;
+    $('addCard').hidden = !(code && amAdmin());
     if (code) {
+      $('roleNote').innerHTML = openRights()
+        ? 'Dit team heeft nog geen beheerder. Een beheerder kan loten en mensen toevoegen of verwijderen.<button type="button" class="btn alt small" data-act="claim">Ik ben beheerder</button>'
+        : (amAdmin() ? 'Je bent beheerder van dit team.' : 'Je bent teamlid. Een beheerder kan loten en mensen toevoegen of verwijderen.');
       var all = Array.from(members.values());
       $('membersTitle').textContent = 'Leden van ' + (room ? room.name : 'Team') + ' (' + all.length + ')';
       $('memberList').innerHTML = all.length ? all.map(function (m) { return memberRow(m, true); }).join('') :
@@ -703,13 +944,303 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     }).join('');
   }
 
+
+  // ---------- Pro-scherm ----------
+  function renderPro() {
+    var el = $('proBody'), h = '';
+    if (proMsg) h += '<div class="banner" style="margin:0 0 12px">' + esc(proMsg) + '</div>';
+    if (!isPro()) {
+      h += '<h1>Koffie Pro ⭐</h1><p class="sub">Voor teams die meer willen.</p>' +
+        '<div class="card"><ul class="pro-list">' +
+        '<li><b>Grote teams</b>: zoveel mensen als je wilt (gratis: ' + FREE_MEMBERS + ' per team)</li>' +
+        '<li><b>Meerdere teams</b>: bijvoorbeeld Administratie én Planning (gratis: 1 team)</li>' +
+        '<li><b>Thema\'s</b>: kies je eigen kleuren, ook een donker thema</li>' +
+        '<li><b>Statistieken</b>: hoeveel en welke drankjes per dag, week, maand en jaar, zonder namen</li>' +
+        '<li><b>Ritme</b>: om de hoeveel tijd er koffie wordt gehaald</li>' +
+        '<li><b>Export naar Excel</b> voor je inkoop: drankjes per afdeling, per dag, week, maand en jaar (zonder namen)</li>' +
+        '<li><b>Eerlijk loten</b>: wie minder vaak gehaald heeft, heeft meer kans</li>' +
+        '<li>Geen reclame, ook niet in de gratis versie</li></ul>' +
+        '<p class="price">' + esc(PRO_PRICE) + '<small>eenmalig, geen abonnement</small></p>' +
+        (PAY_URL ? '<a class="btn big" target="_blank" rel="noopener" href="' + esc(PAY_URL) + '">Koop Pro</a>'
+                 : '<button type="button" class="btn big" data-act="buy">Koop Pro</button>') +
+        '<p class="muted" id="buyMsg" aria-live="polite"></p></div>' +
+        '<div class="card"><h2>Heb je een Pro-code?</h2><label for="proCode">Code</label>' +
+        '<input id="proCode" maxlength="20" autocomplete="off" autocapitalize="characters" placeholder="XXXX-XXXX-XXXX">' +
+        '<button type="button" class="btn alt small" data-act="unlock">Pro activeren</button>' +
+        '<p class="muted" id="unlockMsg" aria-live="polite"></p></div>';
+    } else {
+      var cur = themeNow().id;
+      h += '<h1>Koffie Pro ⭐</h1><p class="sub">Pro is actief. Bedankt!</p>' +
+        '<div class="card"><h2>Thema</h2><div class="sbtns" role="group" aria-label="Kies een thema">' +
+        THEMES.map(function (t) {
+          return '<button type="button" class="sbtn" data-theme="' + t.id + '" aria-pressed="' + (t.id === cur) + '"><i style="background:linear-gradient(135deg,' +
+            t.v.pri + ' 50%,' + t.v.acc + ' 50%)"></i>' + esc(t.name) + '</button>';
+        }).join('') + '</div></div>' +
+        '<div class="card"><h2>Loten</h2><div class="setrow"><div><b>Eerlijk loten</b><small>Wie minder vaak gehaald heeft, heeft meer kans. Geldt als jij loot.</small></div>' +
+        '<button type="button" class="sw' + (fair ? ' on' : '') + '" data-act="fair" role="switch" aria-checked="' + !!fair + '" aria-label="Eerlijk loten"></button></div></div>' +
+        '<div id="proStats"></div>' +
+        '<button type="button" class="mini" data-act="unpro" style="margin:8px 0 0">Pro uitzetten op dit toestel</button>';
+    }
+    el.innerHTML = h;
+    renderProStats();
+  }
+
+  function bars(rows, max, unit) {
+    return rows.map(function (r) {
+      return '<div class="bar"><span class="n">' + esc(r.n) + '</span><span class="t"><i style="width:' + Math.max(3, Math.round(r.c / max * 100)) + '%"></i></span><span class="v">' + r.c + unit + '</span></div>';
+    }).join('');
+  }
+
+  // ---------- statistieken (zonder namen) ----------
+  var DAYNAMES = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'], MONTHNAMES = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+  function p2(n) { return n < 10 ? '0' + n : '' + n; }
+  function isoWeek(d) {
+    var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), day = t.getUTCDay() || 7;
+    t.setUTCDate(t.getUTCDate() + 4 - day);
+    var y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+    return { y: t.getUTCFullYear(), w: Math.ceil(((t - y0) / 86400000 + 1) / 7) };
+  }
+  function bucketKey(d, per) {
+    if (per === 'dag') return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate());
+    if (per === 'week') { var w = isoWeek(d); return w.y + '-W' + p2(w.w); }
+    if (per === 'maand') return d.getFullYear() + '-' + p2(d.getMonth() + 1);
+    return '' + d.getFullYear();
+  }
+  function bucketLabel(d, per) {
+    if (per === 'dag') return DAYNAMES[d.getDay()] + ' ' + d.getDate() + ' ' + MONTHNAMES[d.getMonth()];
+    if (per === 'week') { var w = isoWeek(d); return 'week ' + w.w + ' (' + w.y + ')'; }
+    if (per === 'maand') return MONTHNAMES[d.getMonth()] + ' ' + d.getFullYear();
+    return '' + d.getFullYear();
+  }
+  function buckets(per) {
+    var n = { dag: 14, week: 12, maand: 12, jaar: 3 }[per], now = new Date(), out = [];
+    for (var i = n - 1; i >= 0; i--) {
+      var d;
+      if (per === 'dag') d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+      else if (per === 'week') d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7 * i);
+      else if (per === 'maand') d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      else d = new Date(now.getFullYear() - i, 0, 1);
+      out.push({ k: bucketKey(d, per), l: bucketLabel(d, per) });
+    }
+    return out;
+  }
+  function scopeTeams() {
+    var sc = statScope || ('t:' + code);
+    if (sc === 'all') return teams.slice();
+    var c = sc.slice(2);
+    return teams.filter(function (t) { return t.code === c; });
+  }
+  function scopeEntries() {
+    var out = [];
+    scopeTeams().forEach(function (t) {
+      (stats[t.code] || []).forEach(function (e) { if (e.t > 0) out.push({ team: t.name, t: e.t, o: e.o }); });
+    });
+    return out;
+  }
+  function cupsOf(o) { var n = 0; Object.keys(o).forEach(function (k) { n += o[k]; }); return n; }
+  function minutesText(m) { m = Math.round(m); return m >= 60 ? Math.floor(m / 60) + ' u ' + (m % 60 ? (m % 60) + ' min' : '') : m + ' min'; }
+
+  function csvText() {
+    var rows = {}, ents = scopeEntries();
+    ents.forEach(function (e) {
+      var k = bucketKey(new Date(e.t * 1000), statPeriod);
+      Object.keys(e.o).forEach(function (dr) {
+        var key = k + ';' + e.team + ';' + dr;
+        rows[key] = (rows[key] || 0) + e.o[dr];
+      });
+    });
+    return 'periode;team;drank;aantal\n' + Object.keys(rows).sort().map(function (k) { return k + ';' + rows[k]; }).join('\n');
+  }
+
+  // ---------- Excel-bestand (.xlsx) zonder externe bibliotheek ----------
+  var CRC_T = null;
+  function crc32(b) {
+    if (!CRC_T) { CRC_T = []; for (var n = 0; n < 256; n++) { var c0 = n; for (var k = 0; k < 8; k++) c0 = c0 & 1 ? 0xEDB88320 ^ (c0 >>> 1) : c0 >>> 1; CRC_T[n] = c0 >>> 0; } }
+    var c = 0xFFFFFFFF;
+    for (var i = 0; i < b.length; i++) c = CRC_T[(c ^ b[i]) & 255] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+  function u16(v) { return [v & 255, (v >>> 8) & 255]; }
+  function u32(v) { return [v & 255, (v >>> 8) & 255, (v >>> 16) & 255, (v >>> 24) & 255]; }
+  function zipStore(files) {
+    var enc = new TextEncoder(), parts = [], central = [], offset = 0;
+    files.forEach(function (f) {
+      var nm = enc.encode(f.name), data = enc.encode(f.text), crc = crc32(data), sz = data.length;
+      var lh = [].concat(u32(0x04034b50), u16(20), u16(0x0800), u16(0), u16(0), u16(0x21), u32(crc), u32(sz), u32(sz), u16(nm.length), u16(0));
+      parts.push(new Uint8Array(lh), nm, data);
+      central.push(new Uint8Array([].concat(u32(0x02014b50), u16(20), u16(20), u16(0x0800), u16(0), u16(0), u16(0x21), u32(crc), u32(sz), u32(sz),
+        u16(nm.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(offset))), nm);
+      offset += lh.length + nm.length + sz;
+    });
+    var csize = 0; central.forEach(function (c) { csize += c.length; });
+    var end = new Uint8Array([].concat(u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length), u32(csize), u32(offset), u16(0)));
+    var all = parts.concat(central, [end]), total = 0;
+    all.forEach(function (x) { total += x.length; });
+    var out = new Uint8Array(total), pos = 0;
+    all.forEach(function (x) { out.set(x, pos); pos += x.length; });
+    return out;
+  }
+  function xe(v) { return String(v).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function sheetXml(rows, widths, plain) {
+    var x = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      (plain ? '' : '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>') +
+      '<cols>' + widths.map(function (w, i) { return '<col min="' + (i + 1) + '" max="' + (i + 1) + '" width="' + w + '" customWidth="1"/>'; }).join('') + '</cols><sheetData>';
+    rows.forEach(function (r, ri) {
+      x += '<row r="' + (ri + 1) + '">';
+      r.forEach(function (v, ci) {
+        var ref = String.fromCharCode(65 + ci) + (ri + 1);
+        if (typeof v === 'number') x += '<c r="' + ref + '"><v>' + v + '</v></c>';
+        else x += '<c r="' + ref + '" t="inlineStr"' + (ri === 0 ? ' s="1"' : '') + '><is><t xml:space="preserve">' + xe(v) + '</t></is></c>';
+      });
+      x += '</row>';
+    });
+    x += '</sheetData>';
+    if (!plain && rows.length > 1) x += '<autoFilter ref="A1:' + String.fromCharCode(64 + rows[0].length) + rows.length + '"/>';
+    return x + '</worksheet>';
+  }
+  function buildXlsx(sheets) {
+    var R = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships', M = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+    var files = [
+      { name: '[Content_Types].xml', text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>' +
+        sheets.map(function (sh, i) { return '<Override PartName="/xl/worksheets/sheet' + (i + 1) + '.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>'; }).join('') + '</Types>' },
+      { name: '_rels/.rels', text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="' + R + '/officeDocument" Target="xl/workbook.xml"/></Relationships>' },
+      { name: 'xl/workbook.xml', text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="' + M + '" xmlns:r="' + R + '"><sheets>' +
+        sheets.map(function (sh, i) { return '<sheet name="' + xe(sh.name) + '" sheetId="' + (i + 1) + '" r:id="rId' + (i + 1) + '"/>'; }).join('') + '</sheets></workbook>' },
+      { name: 'xl/_rels/workbook.xml.rels', text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+        sheets.map(function (sh, i) { return '<Relationship Id="rId' + (i + 1) + '" Type="' + R + '/worksheet" Target="worksheets/sheet' + (i + 1) + '.xml"/>'; }).join('') +
+        '<Relationship Id="rId' + (sheets.length + 1) + '" Type="' + R + '/styles" Target="styles.xml"/></Relationships>' },
+      { name: 'xl/styles.xml', text: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="' + M + '"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>' }
+    ];
+    sheets.forEach(function (sh, i) { files.push({ name: 'xl/worksheets/sheet' + (i + 1) + '.xml', text: sheetXml(sh.rows, sh.widths, sh.plain) }); });
+    return zipStore(files);
+  }
+
+  function xlsxSheets() {
+    var ents = scopeEntries(), PER = ['dag', 'week', 'maand', 'jaar'], per = { dag: {}, week: {}, maand: {}, jaar: {} }, tot = {}, all = {}, first = Infinity, last = 0, names = {};
+    ents.forEach(function (e) {
+      first = Math.min(first, e.t); last = Math.max(last, e.t); names[e.team] = 1;
+      var d = new Date(e.t * 1000);
+      Object.keys(e.o).forEach(function (dr) {
+        PER.forEach(function (p) { var k = bucketKey(d, p) + '\t' + e.team + '\t' + dr; per[p][k] = (per[p][k] || 0) + e.o[dr]; });
+        var tk = e.team + '\t' + dr; tot[tk] = (tot[tk] || 0) + e.o[dr];
+        all[dr] = (all[dr] || 0) + e.o[dr];
+      });
+    });
+    var weeks = ents.length ? Math.max(1, Math.ceil((last - first) / 604800)) : 1;
+    function avg(n) { return Math.round(n / weeks * 10) / 10; }
+    var ov = [['Afdeling', 'Drank', 'Totaal aantal', 'Gemiddeld per week']];
+    Object.keys(tot).sort(function (a, b) {
+      var A = a.split('\t'), B = b.split('\t');
+      return A[0] < B[0] ? -1 : A[0] > B[0] ? 1 : tot[b] - tot[a];
+    }).forEach(function (k) { var x = k.split('\t'); ov.push([x[0], x[1], tot[k], avg(tot[k])]); });
+    Object.keys(all).sort(function (a, b) { return all[b] - all[a]; }).forEach(function (dr) { ov.push(['Alle afdelingen', dr, all[dr], avg(all[dr])]); });
+    var sheets = [{ name: 'Overzicht', rows: ov, widths: [26, 24, 16, 20] }];
+    PER.forEach(function (p) {
+      var rows = [['Periode', 'Afdeling', 'Drank', 'Aantal']];
+      Object.keys(per[p]).sort().forEach(function (k) { var x = k.split('\t'); rows.push([x[0], x[1], x[2], per[p][k]]); });
+      sheets.push({ name: 'Per ' + p, rows: rows, widths: [14, 26, 24, 10] });
+    });
+    function dstr(t) { var d = new Date(t * 1000); return d.getDate() + ' ' + MONTHNAMES[d.getMonth()] + ' ' + d.getFullYear(); }
+    sheets.push({ name: 'Over deze cijfers', plain: true, widths: [30, 70], rows: [
+      ['Over deze cijfers', ''],
+      ['Inhoud', 'Alleen aantallen per drankje, periode en afdeling. Er staan geen namen in.'],
+      ['Bron', 'De rondes die het toestel van de beheerder heeft gezien.'],
+      ['Eerste ronde', ents.length ? dstr(first) : '-'],
+      ['Laatste ronde', ents.length ? dstr(last) : '-'],
+      ['Afdelingen', Object.keys(names).join(', ') || '-'],
+      ['Gemaakt op', dstr(Date.now() / 1000)],
+      ['Tip voor inkoop', 'Kijk op het tabblad Overzicht naar Gemiddeld per week en reken dat om naar je inkoopperiode.']
+    ] });
+    return sheets;
+  }
+
+  function deliverFile(name, bytes, mime) {
+    if (window.KoffieApp && window.KoffieApp.saveFile) {
+      var bin = '';
+      for (var i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
+      try { window.KoffieApp.saveFile(name, btoa(bin), mime); return; } catch (e) { /* val terug op download */ }
+    }
+    var blob = new Blob([bytes], { type: mime });
+    try {
+      var f = new File([blob], name, { type: mime });
+      if (/Android|iPhone|iPad/i.test(navigator.userAgent) && navigator.canShare && navigator.canShare({ files: [f] })) { navigator.share({ files: [f], title: name }).catch(function () {}); return; }
+    } catch (e) { /* negeren */ }
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+  }
+  function exportXlsx() {
+    var d = new Date(), name = 'koffie-cijfers-' + d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + '.xlsx';
+    deliverFile(name, buildXlsx(xlsxSheets()), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  }
+
+  function renderProStats() {
+    var el = $('proStats');
+    if (!el || !isPro()) return;
+    var sc = statScope || ('t:' + code), tl = scopeTeams();
+    var h = '<div class="card"><h2>Statistieken</h2><p class="muted">Alleen aantallen, nooit namen. Gebaseerd op de rondes die dit toestel heeft gezien: laat dit daarom het toestel van een beheerder zijn.</p>';
+    // wat bekijk je
+    h += '<h3>Wat bekijk je</h3><div class="tchips" role="group" aria-label="Kies wat je bekijkt">' +
+      teams.map(function (t) { var v = 't:' + t.code; return '<button type="button" class="tchip' + (sc === v ? ' cur' : '') + '" data-scope="' + esc(v) + '" aria-pressed="' + (sc === v) + '">' + esc(t.name) + '</button>'; }).join('') +
+      (teams.length > 1 ? '<button type="button" class="tchip' + (sc === 'all' ? ' cur' : '') + '" data-scope="all" aria-pressed="' + (sc === 'all') + '">Alle teams</button>' : '') +
+      '</div>' + (teams.length > 1 ? '<p class="muted">Kies Alle teams voor de totalen van alle afdelingen samen.</p>' : '');
+    h += '<h3>Periode</h3><div class="tchips" role="group" aria-label="Kies de periode">' +
+      [['dag', 'Dag'], ['week', 'Week'], ['maand', 'Maand'], ['jaar', 'Jaar']].map(function (x) {
+        return '<button type="button" class="tchip' + (statPeriod === x[0] ? ' cur' : '') + '" data-per="' + x[0] + '" aria-pressed="' + (statPeriod === x[0]) + '">' + x[1] + '</button>';
+      }).join('') + '</div>';
+    if (!tl.length) { el.innerHTML = h + '<p class="muted">Kies een team of bedrijf met teams.</p></div>'; return; }
+
+    var bk = buckets(statPeriod), keys = {};
+    bk.forEach(function (b) { keys[b.k] = { l: b.l, c: 0, r: 0 }; });
+    var ents = scopeEntries(), win = [];
+    ents.forEach(function (e) {
+      var d = new Date(e.t * 1000), k = bucketKey(d, statPeriod);
+      if (keys[k]) { keys[k].c += cupsOf(e.o); keys[k].r++; win.push(e); }
+    });
+    var cups = 0, rounds = win.length, agg = {}, perTeam = {}, hours = {};
+    win.forEach(function (e) {
+      var c = cupsOf(e.o); cups += c;
+      Object.keys(e.o).forEach(function (dr) { agg[dr] = (agg[dr] || 0) + e.o[dr]; });
+      perTeam[e.team] = (perTeam[e.team] || 0) + c;
+      var hr = new Date(e.t * 1000).getHours(); hours[hr] = (hours[hr] || 0) + 1;
+    });
+    h += '<div class="kpis"><div class="kpi"><b>' + rounds + '</b><span>rondes</span></div><div class="kpi"><b>' + cups + '</b><span>bekers</span></div>' +
+      '<div class="kpi"><b>' + (rounds ? (cups / rounds).toFixed(1).replace('.', ',') : '–') + '</b><span>bekers per ronde</span></div></div>';
+    if (!rounds) {
+      return void (el.innerHTML = h + '<p class="muted">Nog geen rondes in deze periode. Zodra er geloot is, verschijnen hier de cijfers.</p></div>');
+    }
+    h += '<h3>Bekers per ' + statPeriod + '</h3>';
+    var rows = bk.map(function (b) { return { n: keys[b.k].l, c: keys[b.k].c }; }), mx = Math.max.apply(null, rows.map(function (r) { return r.c; })) || 1;
+    h += bars(rows, mx, '');
+    var dr = Object.keys(agg).map(function (k) { return { n: k, c: agg[k] }; }).sort(function (a, b) { return b.c - a.c; });
+    h += '<h3>Welke drankjes</h3>' + bars(dr, dr[0].c, '×');
+    var pt = Object.keys(perTeam).map(function (k) { return { n: k, c: perTeam[k] }; }).sort(function (a, b) { return b.c - a.c; });
+    if (pt.length > 1) h += '<h3>Welke afdeling drinkt het meest</h3>' + bars(pt, pt[0].c, '×');
+    // ritme: om de hoeveel tijd wordt er koffie gehaald
+    var sorted = win.slice().sort(function (a, b) { return a.t - b.t; }), gaps = [], days = {};
+    sorted.forEach(function (e, i) {
+      var dk = bucketKey(new Date(e.t * 1000), 'dag'); days[dk] = (days[dk] || 0) + 1;
+      if (i && bucketKey(new Date(sorted[i - 1].t * 1000), 'dag') === dk) gaps.push((e.t - sorted[i - 1].t) / 60);
+    });
+    var dcount = Object.keys(days).length, busy = Object.keys(hours).sort(function (a, b) { return hours[b] - hours[a]; })[0];
+    h += '<h3>Ritme</h3><ul class="pro-list"><li>Gemiddeld <b>' + (rounds / dcount).toFixed(1).replace('.', ',') + '</b> ronde' + (rounds / dcount > 1 ? 's' : '') + ' op een dag met koffie</li>' +
+      (gaps.length ? '<li>Op zo\'n dag wordt gemiddeld om de <b>' + minutesText(gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length) + '</b> koffie gehaald</li>' : '') +
+      '<li>Drukste moment: <b>' + p2(+busy) + ':00 – ' + p2((+busy + 1) % 24) + ':00</b></li></ul>';
+    h += '<h3>Exporteren naar Excel</h3><p class="muted">Een Excel-bestand met tabbladen Overzicht, Per dag, Per week, Per maand en Per jaar: hoeveel van welk drankje per afdeling. Zonder namen. Handig voor je inkoop.</p>' +
+      '<button type="button" class="btn small" data-act="xlsx">Download Excel</button>' +
+      '<button type="button" class="btn alt small" data-act="copyCsv">Kopieer als tekst</button>';
+    el.innerHTML = h + '</div>';
+  }
+
   function showTab(t) {
+    if (t !== 'pro') proMsg = '';
     tab = t;
-    ['loten', 'team', 'drinken'].forEach(function (n) { $('tab-' + n).hidden = n !== t; });
+    ['loten', 'team', 'drinken', 'pro'].forEach(function (n) { $('tab-' + n).hidden = n !== t; });
     Array.prototype.forEach.call(document.querySelectorAll('nav button'), function (b) {
       if (b.dataset.tab === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
     if (t === 'drinken') renderDrinks();
+    if (t === 'pro') renderPro();
     window.scrollTo(0, 0);
   }
 
@@ -740,6 +1271,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   $('newTeam').addEventListener('click', function () {
     var n = clean($('newName').value, 40);
     if (!n) { $('newMsg').textContent = 'Geef het team een naam.'; return; }
+    if (!canAddTeam()) { upsell(LIMIT_TEAMS_MSG); return; }
     $('newName').value = ''; $('newMsg').textContent = '';
     createTeam(n);
     showTab(profile ? 'loten' : 'drinken');
@@ -748,9 +1280,21 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   $('joinTeam').addEventListener('click', function () {
     var c = parseCode($('joinCode').value);
     if (!c) { $('joinMsg').textContent = 'Dat lijkt geen geldige link of code.'; return; }
+    if (!canAddTeam(c)) { upsell(LIMIT_TEAMS_MSG); return; }
     $('joinCode').value = ''; $('joinMsg').textContent = '';
     activateTeam(c);
     showTab(profile ? 'loten' : 'drinken');
+  });
+
+  $('addDrink').innerHTML = DRINKS.filter(function (x) { return x !== 'Anders'; }).map(function (x) { return '<option>' + esc(x) + '</option>'; }).join('');
+  $('addColl').addEventListener('click', function () {
+    var n = clean($('addName').value, 30);
+    if (!n) { $('addMsg').textContent = 'Vul een naam in.'; return; }
+    if (!amAdmin()) { $('addMsg').textContent = 'Alleen een beheerder kan collega\'s toevoegen.'; return; }
+    if (!teamIsPro() && members.size >= FREE_MEMBERS) { upsell('Dit team zit vol: in de gratis versie passen ' + FREE_MEMBERS + ' mensen. Met Pro is er geen grens.'); return; }
+    publish({ k: 'join', pid: uid(), name: n, drink: $('addDrink').value, note: clean($('addNote').value, 40) });
+    $('addName').value = ''; $('addNote').value = '';
+    $('addMsg').textContent = n + ' is toegevoegd ✓';
   });
 
   $('drinkCards').addEventListener('change', function (e) {
@@ -762,7 +1306,7 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   });
 
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-rm],[data-tab],[data-view],[data-today],[data-menu]');
+    var t = e.target.closest('[data-act],[data-pid],[data-del],[data-open],[data-rm],[data-tab],[data-view],[data-today],[data-menu],[data-theme],[data-adm],[data-scope],[data-per]');
     if (!t) return;
     var d = t.dataset;
     if (d.tab) { showTab(d.tab); return; }
@@ -772,6 +1316,24 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
     else if (d.act === 'copyInvite') copyText(inviteUrl(d.team), t, 'Kopieer link');
     else if (d.act === 'shareInvite') nativeShare(inviteText(teams.filter(function (x) { return x.code === d.team; })[0] || { code: d.team, name: 'Team' }));
     else if (d.act === 'saveDrink') saveDrink(d.team);
+    else if (d.act === 'usePoints') {
+      if (!spendBusy && lastDraw && lastDraw.winner === pid && settled(pid) >= POINTS_COST) { spendBusy = true; setTimeout(function () { spendBusy = false; renderLoten(); }, 5000); doDraw(lastDraw.did); renderLoten(); }
+    }
+    else if (d.act === 'claim') publish({ k: 'admin', pid: pid, v: true });
+    else if (d.act === 'copyCsv') copyText(csvText(), t, t.textContent);
+    else if (d.act === 'xlsx') exportXlsx();
+    else if (d.act === 'buy') { var bm = $('buyMsg'); if (bm) bm.textContent = 'Betalen kan binnenkort. Heb je al een code, vul die hieronder in.'; }
+    else if (d.act === 'unlock') {
+      var um = $('unlockMsg');
+      if (validCode($('proCode').value)) { pro = { ok: true, t: Date.now() }; save('kr_pro', pro); applyTheme(); renderPro(); renderAll(); if (code) ensureMe(); }
+      else if (um) um.textContent = 'Deze code klopt niet. Controleer de code en probeer het opnieuw.';
+    }
+    else if (d.act === 'unpro') { pro = null; save('kr_pro', null); applyTheme(); renderPro(); renderAll(); }
+    else if (d.act === 'fair') { fair = !fair; save('kr_fair', fair); renderPro(); }
+    else if (d.adm) publish({ k: 'admin', pid: d.adm, v: d.v === '1' });
+    else if (d.scope) { statScope = d.scope; renderProStats(); }
+    else if (d.per) { statPeriod = d.per; renderProStats(); }
+    else if (d.theme) { if (isPro()) { save('kr_theme', d.theme); applyTheme(); renderPro(); } }
     else if (d.pid) {
       var m = members.get(d.pid);
       if (m) publish({ k: 'present', pid: m.pid, v: !m.present });
@@ -809,7 +1371,8 @@ nav button[aria-current=page] .ic{background:#E8C9A0}
   else if (known(active)) openTeam(active);
   else if (teams.length) openTeam(teams[0].code);
   else renderAll();
-  if (profile && profile.name) showTab('loten'); else showTab(teams.length || code ? 'drinken' : 'loten');
+  if (proMsg) showTab('pro');
+  else if (profile && profile.name) showTab('loten'); else showTab(teams.length || code ? 'drinken' : 'loten');
 })();
 </script>
 </body>
