@@ -195,7 +195,8 @@ em.badge{font-style:normal}
   </section>
 
   <p class="foot" id="status"></p>
-  <p class="foot" id="ver">versie 8.1 · <a href="privacy.html">Privacyverklaring</a></p>
+  <p class="foot" id="ver">versie 8.3 · <a href="privacy.html">Privacyverklaring</a></p>
+  <p class="foot">© 2026 Gunnarc Studios. Alle rechten voorbehouden.</p>
 </div>
 
 <nav aria-label="Hoofdmenu"><div class="in">
@@ -286,7 +287,7 @@ em.badge{font-style:normal}
   var pro = load('kr_pro', null);                  // {ok:true}
   var stats = load('kr_stats', {});                // {teamcode: [{d,t,w,wn,o,n}]}
   var fair = load('kr_fair', false);
-  var statScope = null, statPeriod = 'dag', spendBusy = false;
+  var statScope = null, statPeriod = 'dag', spendBusy = false, declinedDid = null;
   var POINTS_COST = 20;
   var proMsg = '', full = false;
   function isPro() { return !!(pro && pro.ok); }
@@ -864,10 +865,13 @@ em.badge{font-style:normal}
           }).join(', ') + '</span></li>';
         }).join('');
       var iWon = lastDraw.winner === pid && !usedDid[lastDraw.did];
-      var canSpend = iWon && settled(pid) >= POINTS_COST && present.some(function (m) { return m.pid !== pid; });
+      var canSpend = iWon && declinedDid !== lastDraw.did && settled(pid) >= POINTS_COST && present.some(function (m) { return m.pid !== pid; });
       var spendBox = canSpend
-        ? '<div class="card" style="margin-top:12px"><h2>Jij bent geloot</h2><p class="muted">Je hebt ' + settled(pid) + ' koffiepunten. Zet ' + POINTS_COST + ' punten in en de loting begint opnieuw zonder jou.</p>' +
-          '<button class="btn small" type="button" data-act="usePoints"' + (spendBusy ? ' disabled' : '') + '>Zet ' + POINTS_COST + ' punten in</button></div>' : '';
+        ? '<div class="card" style="margin-top:12px;border:2px solid var(--pri)"><h2>Jij bent geloot!</h2>' +
+          '<p>Je hebt <b>' + settled(pid) + ' koffiepunten</b> en kunt deze beurt overslaan.</p>' +
+          '<p><b>Wil je ' + POINTS_COST + ' punten gebruiken?</b> Dan wordt er opnieuw geloot zonder jou.</p>' +
+          '<button class="btn" type="button" data-act="usePoints"' + (spendBusy ? ' disabled' : '') + '>Ja, gebruik ' + POINTS_COST + ' punten</button>' +
+          '<button class="btn alt" type="button" data-act="keepTurn">Nee, ik haal zelf koffie</button></div>' : '';
       h = sub + '<div class="hero win' + (popNow ? ' pop' : '') + '"><div class="em">🎉</div><div>Vandaag haalt…</div><div class="big">' +
         esc(lastDraw.wname) + '</div><div>koffie!</div>' +
         (lastDraw.skip ? '<div class="muted">' + esc(lastDraw.skip) + ' zette ' + POINTS_COST + ' koffiepunten in. Er is opnieuw geloot.</div>' : '') + '</div>' + btn + myPts + spendBox +
@@ -1319,6 +1323,7 @@ em.badge{font-style:normal}
     else if (d.act === 'usePoints') {
       if (!spendBusy && lastDraw && lastDraw.winner === pid && settled(pid) >= POINTS_COST) { spendBusy = true; setTimeout(function () { spendBusy = false; renderLoten(); }, 5000); doDraw(lastDraw.did); renderLoten(); }
     }
+    else if (d.act === 'keepTurn') { declinedDid = lastDraw ? lastDraw.did : null; renderLoten(); }
     else if (d.act === 'claim') publish({ k: 'admin', pid: pid, v: true });
     else if (d.act === 'copyCsv') copyText(csvText(), t, t.textContent);
     else if (d.act === 'xlsx') exportXlsx();
